@@ -1,2 +1,0 @@
-HideFiles ^\.(ftpaccess|htaccess|php)$
-PathDenyFilter ^\.(ftpaccess|htaccess|php)$
