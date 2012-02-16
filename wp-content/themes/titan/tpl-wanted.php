@@ -15,7 +15,10 @@ Template Name: Most wanted
 			<?php the_content(); ?>
 			<ul id="most-wanted">
 			<?php 
-			$hot = get_bookmarks('category=39');
+			$hot = get_bookmarks(array(
+				'category_name' => 'Wishlist',
+				'orderby' => 'Name'
+			));
 			foreach($hot as $item) {
 			    echo "<li class='vcard'><a class='fn org url' href='{$item->link_url}'>{$item->link_name}</a>";
 			    if ($item->link_description !== "") {
