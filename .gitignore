@@ -1,3 +1,4 @@
 /wp-content/uploads/
 /wp-content/upgrade/
+/wp-content/plugins/wordpress-importer/
 .DS_Store
