@@ -3,6 +3,7 @@
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta name="google-site-verification" content="G4gCHqqeSJKF8_GzrYR5oRg1HmmVTj7-6t6Pg5CMpac" />
 	<?php if ( is_front_page() ) : ?>
 		<title><?php bloginfo( 'name'); ?> - restaurant reviews and food thoughts</title>
 	<?php elseif ( is_404() ) : ?>
