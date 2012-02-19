@@ -1,0 +1,86 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
+.GARcontainer{font-size:14px;line-height:20px;font-family:Times New Roman, Times, serif;margin-right:20px;}.GARcontainer body,.GARcontainer h1,.GARcontainer h2,.GARcontainer h2,.GARcontainer h3,.GARcontainer h4,.GARcontainer h5,.GARcontainer h6,.GARcontainer ul,.GARcontainer li,.GARcontainer p,.GARcontainer form,.GARcontainer fieldset,.GARcontainer legend,.GARcontainer input{padding:0;margin:0;}
+.GARcontainer body{font-size:1em;line-height:1.15em;font-family:Times New Roman, Times, serif;}
+.GARcontainer h1,.GARcontainer h2,.GARcontainer h2,.GARcontainer h3,.GARcontainer h4,.GARcontainer h5,.GARcontainer h6{font-family:Arial,sans-serif;color:#404040;font-weight:bold;}
+.GARcontainer p{margin-bottom:7px;margin-top:7px;}
+.GARcontainer h1{font-size:6em;line-height:1em;letter-spacing:-6px;}
+.GARcontainer h2{font-size:5em;line-height:1em;letter-spacing:-5px;}
+.GARcontainer h3{font-size:4em;line-height:1em;letter-spacing:-4px;}
+.GARcontainer h4{font-size:3em;line-height:1em;letter-spacing:-3px;}
+.GARcontainer h5{font-size:2em;line-height:1em;letter-spacing:-2px;}
+.GARcontainer h6{font-size:1.5em;line-height:1em;letter-spacing:-1px;}
+.GARcontainer ul{margin-left:18px;}
+.GARcontainer img{border:0;}
+.GARcontainer input,.GARcontainer textarea,.GARcontainer select{font-family:Arial,sans-serif;color:#404040;}
+.GARcontainer a{text-decoration:none;}
+.GARcontainer a:hover{text-decoration:none;}
+.GARcontainer a:active{outline:none;}
+.GARcontainer :focus{outline:none;}
+.GARcontainer .clear{clear:both;}
+.GARcontainer .rows{padding-bottom:20px;margin-bottom:0px;clear:both;overflow:hidden;}
+.GARcontainer .bar{background-color:#222222;background-image:-moz-linear-gradient(center top, #494949, #222222);background-repeat:repeat-x;box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;}
+.GARcontainer .row-two-columns{margin:0 10px 0 10px;padding:10px;}
+.GARcontainer .two-columns-wide{float:left;margin:-10px;min-width:440px;width:520px;max-width:620px;padding:30px 40px 30px 30px;}
+.GARcontainer .two-columns-narrow{float:left;margin:-10px;min-width:260px;max-width:440px;padding:30px 40px 30px 30px;}
+.GARcontainer .message{background-image:-moz-linear-gradient(center top, #ddf4fb, #c6edf9);background-repeat:repeat-x;border-radius:4px 4px 4px 4px;border-style:solid;border-width:1px;box-shadow:0 1px 0 rgba(255, 255, 255, 0.25) inset;color:#404040;position:relative;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);padding:20px;background-color:#DDF4FB;border-color:#C6EDF9;}
+.GARcontainer .input{border-radius:4px 4px 4px 4px;border-style:solid;border-width:1px;box-shadow:0 1px 0 rgba(255, 255, 255, 0.2) inset,0 1px 2px rgba(0, 0, 0, 0.05);color:#333333;display:inline-block;font-size:13px;line-height:normal;padding:5px 14px 6px;text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);}
+.GARcontainer .button{-moz-border-bottom-colors:none;-moz-border-image:none;-moz-border-left-colors:none;-moz-border-right-colors:none;-moz-border-top-colors:none;-moz-transition:all 0.1s linear 0s;background-color:#E6E6E6;background-image:-moz-linear-gradient(center top, #ffffff, #ffffff 25%, #e6e6e6);background-repeat:no-repeat;border-color:#CCCCCC #CCCCCC #BBBBBB;border-radius:4px 4px 4px 4px;border-style:solid;border-width:1px;box-shadow:0 1px 0 rgba(255, 255, 255, 0.2) inset,0 1px 2px rgba(0, 0, 0, 0.05);color:#333333;cursor:pointer;display:inline-block;font-size:13px;line-height:normal;padding:5px 14px 6px;text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);}
+.GARcontainer select{height:27px;line-height:27px;}
+.GARcontainer .four-columns-equal{display:block;float:left;margin:10px;margin:7px;padding:5px;width:270px;}
+.GARcontainer .header,.GARcontainer .details,.GARcontainer .settings{padding-bottom:20px;margin-bottom:0px;clear:both;overflow:hidden;padding-bottom:0px;}
+.GARcontainer .details .about{float:left;margin:-10px;min-width:440px;width:520px;max-width:620px;padding:30px 40px 30px 30px;text-align:justify;}
+.GARcontainer .details .help{float:left;margin:-10px;min-width:260px;max-width:440px;padding:30px 40px 30px 30px;}
+.GARcontainer .header{background-color:#222222;background-image:-moz-linear-gradient(center top, #494949, #222222);background-repeat:repeat-x;box-shadow:0 1px 3px rgba(0, 0, 0, 0.25),0 -1px 0 rgba(0, 0, 0, 0.1) inset;margin:-10px -20px 20px -20px;padding:30px 40px 20px 40px;}
+.GARcontainer .settings{background-image:-moz-linear-gradient(center top, #ddf4fb, #c6edf9);background-repeat:repeat-x;border-radius:4px 4px 4px 4px;border-style:solid;border-width:1px;box-shadow:0 1px 0 rgba(255, 255, 255, 0.25) inset;color:#404040;position:relative;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);padding:20px;background-color:#DDF4FB;border-color:#C6EDF9;margin-bottom:20px;}
+.GARcontainer #GARs_email,.GARcontainer #GARs_password,.GARcontainer #GARs_tableid{border-radius:4px 4px 4px 4px;border-style:solid;border-width:1px;box-shadow:0 1px 0 rgba(255, 255, 255, 0.2) inset,0 1px 2px rgba(0, 0, 0, 0.05);color:#333333;display:inline-block;font-size:13px;line-height:normal;padding:5px 14px 6px;text-shadow:0 1px 1px rgba(255, 255, 255, 0.75);}
+.GARcontainer .settings-left{float:left;margin:-10px;min-width:440px;width:520px;max-width:620px;padding:30px 40px 30px 30px;padding:10px 0;margin:0 50px 0 0;}
+.GARcontainer .settings-right{float:left;margin:-10px;min-width:260px;max-width:440px;padding:30px 40px 30px 30px;padding:10px 0;margin:0 50px 0 0;}
+.GARcontainer .button{margin-left:10px;margin-top:30px;}
+.GARcontainer label{display:block;float:left;margin:10px;margin:7px;padding:5px;width:270px;}
+.GARcontainer .settings-right .button{margin:5px 0 0 0;}
+.GARcontainer #message{font-family:Arial,sans-serif;color:#404040;font-weight:bold;margin:-20px 20px 20px 20px;}
+.GARcontainer .header h3{float:left;font-size:4em;letter-spacing:-4px;line-height:1em;width:340px;}
+.GARcontainer .header h3 a{display:block;background:transparent url('img/logo-reporteur.png') no-repeat 0px 0px;text-indent:-10000px;height:66px;}
+.GARcontainer .header h6{color:#555555;float:right;font-size:13px;margin-top:14px;position:relative;}
+.GARcontainer .header h6 a{-moz-transition:none 0s ease 0s;background-color:#333;border:1px solid #111111;border-radius:4px 4px 4px 4px;box-shadow:0 1px 2px rgba(0, 0, 0, 0.1) inset,0 1px 0 rgba(255, 255, 255, 0.25);font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1;padding:4px 9px;color:#dedede;font-weight:normal;white-space:nowrap;}
+.GARcontainer .header h6 a:hover{background:none repeat scroll 0 0 #446677;}
+.GARcontainer .header a.switch_details{}
+.GARcontainer .header a.hide_mumbojumbo{background:none repeat scroll 0 0 #554433;}
+.GARcontainer .header a.switch_details:hover{background:none repeat scroll 0 0 #776644;}
+.GARcontainer UL.atom-tabs{position:relative;z-index:2;font-family:Arial,sans-serif;color:#404040;}
+.GARcontainer UL.atom-tabs,.GARcontainer UL.atom-tabs LI{margin:0;padding:0;list-style:none;float:left;}
+.GARcontainer UL.atom-tabs LI{padding:0 5px;}
+.GARcontainer UL.atom-tabs LI A{float:left;padding:24px 10px 10px 10px;border:1px solid #CCCCCC;border-bottom:1px solid #E0E0E0;background:#F0F0F0;text-decoration:none;color:#333333;height:60px;width:auto;min-width:90px;max-width:120px;position:relative;}
+.GARcontainer UL.atom-tabs LI A:HOVER,.GARcontainer UL.atom-tabs LI.current A{background:#FFFFFF;}
+.GARcontainer UL.atom-tabs LI.current A{font-weight:bold;font-size:14px;border-bottom:1px solid #FFFFFF;}
+.GARcontainer .atom-tabs-container{position:relative;z-index:1;clear:both;border:1px solid #E0E0E0;padding:10px;top:-1px;}
+.GARcontainer UL.atom-tabs LI A span.title{border:1px solid #ccc;border-style:none solid solid none;display:block;font-size:11px;left:0;margin:0;padding:0 12px;position:absolute;top:0;}
+.GARcontainer UL.atom-tabs LI.current A span.title{background:#46A546;color:#ffffff;}
+.GARcontainer UL.atom-tabs LI A:hover span.title{background:#F89406;color:#ffffff;}
+.GARcontainer span.p,.GARcontainer span.v{border-bottom:1px dashed #CCCCCC;display:block;font-size:24px;font-weight:bold;letter-spacing:-1px;padding:4px 0 4px 32px;text-align:right;}
+.GARcontainer span.p{background:transparent url('img/page_white_stack.png') no-repeat 3px 7px;}
+.GARcontainer span.v{background:transparent url('img/group.png') no-repeat 3px 7px;}
+.GARcontainer table{border:1px solid #DDDDDD;border-collapse:separate;margin-bottom:18px;padding:0;width:380px;border-spacing:0;font-size:11px;font-family:Arial,sans-serif;color:#404040;}
+.GARcontainer table th,.GARcontainer table td{line-height:18px;padding:4px 8px;text-align:left;}
+.GARcontainer table th{line-height:18px;padding:10px 10px 9px;text-align:left;font-size:12px;font-weight:bold;padding-top:9px;vertical-align:middle;}
+.GARcontainer table thead tr:first-child th:first-child,.GARcontainer table tbody tr:first-child td:first-child{border-radius:4px 0 0 0;}
+.GARcontainer table th+th,.GARcontainer table td+td,.GARcontainer table th+td{border-left:1px solid #DDDDDD;}
+.GARcontainer table thead tr:first-child th:last-child,.GARcontainer table tbody tr:first-child td:last-child{border-radius:0 4px 0 0;}
+.GARcontainer table thead tr:first-child th:first-child,.GARcontainer table tbody tr:first-child td:first-child{border-radius:4px 0 0 0;}
+.GARcontainer table tbody tr:nth-child(2n+1) td,.GARcontainer table tbody tr:nth-child(2n+1) th{background-color:#F9F9F9;}
+.GARcontainer table td{border-top:1px solid #DDDDDD;vertical-align:top;}
+.GARcontainer table tbody tr:nth-child(2n+1) td,.GARcontainer table tbody tr:nth-child(2n+1) th{background-color:#F9F9F9;}
+.GARcontainer table th+th,.GARcontainer table td+td,.GARcontainer table th+td{border-left:1px solid #DDDDDD;}
+.GARcontainer table td{border-top:1px solid #DDDDDD;vertical-align:top;color:#333;}
+.GARcontainer th.n{width:20px;}
+.GARcontainer th.d{width:190px;}
+.GARcontainer th.p{width:40px;}
+.GARcontainer th.v{width:40px;}
+.GARcontainer .ga-data-detailed-container{overflow:hidden;}
+.GARcontainer .ga-data-detailed-container div{float:left;margin:0 10px 10px 0;}
+.GARcontainer .ga-data-detailed-container div.ellipsis{float:none;margin:0;padding:0;width:200px;}
+.GARcontainer .gaTopCountries div.ellipsis,.GARcontainer .gaTopReferrers div.ellipsis{width:160px;}
+.GARcontainer td.p,.GARcontainer td.v{font-size:14px;font-weight:bold;padding-right:10px;text-align:right;color:#444444;}
+.GARcontainer .ga-data-detailed-container h5{background-color:#F5F5F5;background-image:-moz-linear-gradient(center top, #ffffff, #f5f5f5);background-repeat:repeat-x;border:1px solid #DDDDDD;border-radius:3px 3px 3px 3px;box-shadow:0 1px 0 #FFFFFF inset;margin:0 0 18px;padding:7px 14px;font-size:14px;letter-spacing:-1px;padding:10px 20px;font-weight:bold;margin-bottom:10px;}
+.GARcontainer .atom-tabs-container .loading{background-color:#EEDC94;background-image:-moz-linear-gradient(center top, #fceec1, #eedc94);background-repeat:repeat-x;border-color:rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);border-radius:4px 4px 4px 4px;border-style:solid;border-width:1px;box-shadow:0 1px 0 rgba(255, 255, 255, 0.25) inset;color:#404040;margin-bottom:18px;padding:7px 15px 7px 45px;position:relative;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);}
+.GARcontainer .atom-tabs-container .loading img{border:1px solid #EEDC94;background:#ffffff;padding:2px 4px;position:absolute;top:4px;left:10px;}
