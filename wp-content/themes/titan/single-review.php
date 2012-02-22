@@ -24,6 +24,11 @@
  			  <a href="http://www.flickr.com/photos/thecssdiv/sets/<?php echo $details['Restaurant flickr group'][0] ?>/">More pictures</a>
  			  </div>
  			  <div class="description">
+              <?php if (count($details['post_alert'])) : ?>
+              <div class="alert">
+              <?php echo $details['post_alert'][0]; ?>
+              </div>
+              <?php endif; ?>
  				<?php the_content(__( 'read more...', 'titan')); ?>
  				<?php
         if (function_exists('tweet_button'))
