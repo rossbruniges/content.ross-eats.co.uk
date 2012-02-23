@@ -47,10 +47,12 @@
 			<?php endif; ?>
 		</div>
 		<div id="footer-search" class="footer-column">
-		    <div class="twitter-section">
+		    <div class="tweets twitter-section">
 		        <h2>Latest tweet</h2>
 		        <p><?php aktt_latest_tweet(); ?></p>
-		        <p>For more of the same and to be the first to hear about updates <a href="http://twitter.com/ross_eats">follow me on twitter</a>.</p>
+		        <p>For more of the same and to be the first to hear about updates follow me on twitter.</p>
+                <a href="https://twitter.com/ross_eats" class="twitter-follow-button" data-show-count="false">Follow @ross_eats</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 			</div>
 		<div class="twitter-section">
 			<h2><?php _e('Search', 'titan'); ?></h2>
