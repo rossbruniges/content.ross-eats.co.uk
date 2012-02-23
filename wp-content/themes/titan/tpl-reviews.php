@@ -21,7 +21,7 @@ then displays them in a lovely ordered list
             ?>
 			<ol class="review_list">
 			<?php
-			    // create a wordpress loop that will be used to hold the burrito posts
+			    // create a wordpress loop that will be used to hold reviews
 			    $review_list = new WP_Query('category_name=reviews&posts_per_page=-1&meta_key=Restaurant rating&orderby=meta_value_num&order=DESC&tag=' . $page_slug);
 			    $current_rating = 0;
 			    while ($review_list->have_posts()) : $review_list->the_post();
@@ -47,8 +47,13 @@ then displays them in a lovely ordered list
 			            <div class="adr">
                  		    <?php echo $review_details['Restaurant address'][0]; ?>
                  		</div>
-                 		<p class="date">Reviewed on <?php the_time(__ ( 'F jS, Y', 'titan')); ?></p>
-                 		<?php the_post_thumbnail(array(80,810)) ?>
+                        <p class="date">Reviewed on <?php the_time(__ ( 'F jS, Y', 'titan')); ?></p>
+                 		<?php if (count($review_details['post_alert'])) : ?>
+                        <div class="alert">
+                            <?php echo $review_details['post_alert'][0]; ?>
+                        </div>
+                        <?php endif; ?>
+                        <?php the_post_thumbnail(array(80,810)) ?>
 			        </li>
 			    <?php
 			        

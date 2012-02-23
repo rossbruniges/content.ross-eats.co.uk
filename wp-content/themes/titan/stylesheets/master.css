@@ -1024,8 +1024,7 @@ img.border {
     box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
 }
 .review_list .date {
-    margin-top: 0.5em;
-    margin-bottom: 0;
+    margin: 0.5em 0 1em 0;
     padding-top: 1em;
     border-top: 1px solid #DBD3D0;
     line-height: 1;
