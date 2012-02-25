@@ -35,7 +35,11 @@
            tweet_button(get_permalink());
         ?>
  				</div>
- 				<?php if(function_exists('echo_ald_crp')) echo_ald_crp(); ?>
+ 				<?php if(function_exists('related_posts')): ?>
+                <div class="related_posts">
+                <?php related_posts(); ?>
+                </div>
+                <? endif; ?>
  				<?php edit_post_link(__( 'Edit', 'titan')); ?>
  				<?php wp_link_pages(); ?>
  			</div><!--end entry-->

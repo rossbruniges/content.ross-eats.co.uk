@@ -1044,3 +1044,29 @@ img.border {
 .tweets iframe {
     margin-top: 15px;
 }
+.related_posts {
+    border-top: 1px solid #EFEAE4;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+.related_posts h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.related_posts ol {
+    overflow: hidden;
+    zoom: 1;
+    list-style-type: none;
+    margin-left: 0;
+}
+.related_posts ol li {
+    float: left;
+    margin:0 0 0 10px;
+    padding-left: 10px;
+    border-left: 1px solid #efeae4;
+}
+.related_posts ol li:first-child {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+}
