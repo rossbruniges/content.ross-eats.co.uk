@@ -66,8 +66,10 @@
  		  </div>
  		  <p><strong>Map</strong></p>
  		  <img src="http://maps.google.com/maps/api/staticmap?zoom=14&size=236x236&maptype=roadmap&markers=color:blue|<?php echo $details['Restaurant Geo lat'][0] ?>,<?php echo $details['Restaurant Geo long'][0] ?>&sensor=false" width="238" height="238" alt="Location map" />
- 		  <h3>Don't just take my word for it</h3>
+ 		  <?php if (count($details['urbanspoon'])): ?>
+          <h3>Don't just take my word for it</h3>
 			<?php echo $details['urbanspoon'][0]; ?>
+            <?php endif; ?>
 		</div>
  	<?php endwhile; /* rewind or continue if all posts have been fetched */ ?>
  		<?php comments_template( '', true); ?>
