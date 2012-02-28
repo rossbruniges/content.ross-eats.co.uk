@@ -1,0 +1,5 @@
+== Changelog ==
+
+= 2.3 =
+* Replaced the old logo uploader with a faster version that uses WP core.
+* Fixed a bug where slashes were added to Flickr image titles

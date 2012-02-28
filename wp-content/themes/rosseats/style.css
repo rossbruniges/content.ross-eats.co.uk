@@ -1,0 +1,560 @@
+/*
+ * Theme Name:  ross-eats.co.uk
+ * Author:      Ross Bruniges
+ * Description: Titan theme (from Theme Foundary) with mods for ross-eats.co.uk
+ * Template:    titan_original
+ */
+
+@import url('../titan_original/style.css');
+
+/* HEADER
+----------------------------------------------- */
+/* Follow */
+#follow {
+	background: #2f2922;
+	padding: 5px 0;
+}
+#follow dl {
+	float: right;
+	font-size: 1.3em;
+}
+#follow dl dt, 
+#follow dl dd { 
+    float: left; 
+}
+#follow dt {
+	font-weight: bold;
+	color: #ad9b83;
+}
+#follow dd { 
+    margin-left: 20px; 
+}
+#follow dd a {
+	display: block;
+	color: #cfc4b6;
+}
+#follow dd a.rss { 
+    padding-left: 20px; 
+    background: url(images/css/feed-icon.png) no-repeat 0 .2em;
+}
+#follow dd a.twitter { 
+    padding-left: 19px; 
+    background: url(images/css/twitter-icon.png) no-repeat 0 .15em; 
+}
+/* Header title */
+h1#title, 
+div#title {
+	float: left;
+	position: relative;
+	padding: 30px 0 36px 140px;
+	font-size: 3em;
+	font-weight: bold;
+	line-height: 50px;
+}
+h1#title a:link, 
+h1#title a:visited, 
+div#title a:link, 
+div#title a:visited { 
+    color: #e9e5e0;
+}
+h1#title a:hover, 
+div#title a:hover { 
+    text-decoration: none; 
+}
+#frame {
+    border: 1px solid #ebebeb;
+    background: #fff;
+    padding: 8px 8px 24px;
+    margin-right: 16px;
+    position: absolute;
+    top: -2px;
+    left: 0;
+    /* rotate the box */
+    -webkit-transform: rotate(-9deg);
+    -moz-transform: rotate(-9deg);
+    -o-transform: rotate(-9deg);
+    transform: rotate(-9deg);
+    /* box shadow */
+    -webkit-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+    -moz-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+    -o-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+    box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+}
+
+/* CONTENT
+----------------------------------------------- */
+.content-background {
+    padding-top: 40px;
+}
+#content.hreview {
+    width: 960px;
+}
+.hreview .post {
+  float: left;
+	width: 648px;
+}
+.alert {
+    padding: 8px 14px;
+    margin-bottom: 18px;
+    background: #fcf8e3;
+    border: 1px solid #fbeed5;
+    -webkit-border-radius: 4px;
+    -moz-boirder-radius: 4px;
+    border-radius: 4px;
+}
+#comments {
+    clear: both;
+}
+.entry .photo_frame {
+	background: #F0EBE6;
+	margin-bottom: 10px;
+	border: 2px solid #E6E1DC;
+	border-width: 0 0 2px;
+	font-size: 0.9em;
+	font-weight: bold;
+	overflow: hidden;
+	width: 487px;
+	padding-left: 10px;
+}
+.entry .photo_frame img {
+	margin-left: -10px;
+	/* needed to ensure the text wraps underneath */
+	display: block;
+}
+.date .category {
+  display: block;
+  font-size: 0.8em;
+}
+
+/* Review summaries */
+div.vcard {
+  float: right;
+  border: 1px solid #E6E1DC;
+	padding-bottom: 30px;
+	width: 236px;
+  background: #F0EBE6;
+  color: #555;
+  padding: 14px;
+  font-size: 1.3em;
+}
+div.vcard h2 {
+  text-transform: uppercase;
+  font-size: 1.2em;
+  border-bottom: 1px solid #E6E1DC;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+div.vcard h3 {
+  text-transform: uppercase;
+  border-bottom: 1px solid #E6E1DC;
+}
+div.vcard p {
+  line-height: 2;
+}
+div.vcard .fn {
+  font-weight: bold;
+  display: block;
+  line-height: 2;
+  font-size: 1.2em;
+}
+div.vcard .adr p {
+  line-height: 1.5;
+}
+
+/* Burrito stuff */
+.burrito .description,
+.category-london-burritos .entry {
+    position: relative;
+    min-height: 152px;
+}
+.burrito .description p,
+.category-london-burritos .entry p {
+    margin-left: 126px;
+}
+.category-london-burritos .entry .cta {
+    margin-left: 0;
+    font-size: 1.2em;
+}
+.burrito img,
+.category-london-burritos .entry img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 7px;
+    border: 1px solid #E6E1DC;
+    background: #F0EBE6;
+}
+.burrito .announce {
+    padding: 10px;
+    background: #F0EBE6;
+    border: 1px solid #E6E1DC; 
+    margin-bottom: 10px;   
+}
+.burrito .announce p {
+    margin-left: 0;
+}
+
+/* Image gallery */
+#images {
+  float: right;
+  padding: 14px;
+  width: 240px;
+  border: 1px solid #e6e1dc;
+  background: #f0ebe6;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  zoom: 1;
+}
+.active {
+  position: relative;
+}
+#images p {
+  margin-bottom: 0;
+}
+#images img {
+  display: block;
+  padding-bottom: 6px;
+  margin: 0 auto;
+}
+#images a {
+  display: block;
+  float: right;
+}
+.active a {
+  background: transparent url(images/css/ajax-loader.gif) 0 3px no-repeat;
+  padding-left: 24px;
+}
+#food_gallery {
+  margin: 0;
+  overflow: hidden;
+  zoom: 1;
+  width: 240px;
+}
+#food_gallery li {
+  background: none;
+  margin: 0;
+  padding: 0;
+  width: 240px;
+  float: left;
+  display: none;
+}
+#food_legend {
+  float: right;
+  text-align: right;
+}
+#food_legend span {
+  font-weight: bold;
+}
+#food_legend a {
+	background: none;
+}
+#food_legend .f {
+	color: #0064df;
+}
+#food_legend .f span {
+	color: #ff0086;
+}
+#images button {
+  position: absolute;
+  top: 7px;
+  left: 0px;
+  height: 194px;
+  /* width needed for IE otherwise buttons go 100% width */
+  width: 31px;
+  border: 2px solid #E6E1DC;
+  background: #F0EBE6;
+}
+#images button:hover {
+  cursor: pointer;
+  background: #F9F7F5;
+}
+#images #prev {
+  border-left: 0;
+  -webkit-border-top-right-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  -moz-border-radius-topright: 4px;
+  -moz-border-radius-bottomright: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+#images #next {
+  right: 0;
+  left: auto;
+  border-right: 0;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-bottomleft: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+#images button span {
+  position: absolute;
+  left: -9999em;
+}
+
+/* Related posts */
+.related_posts {
+    border-top: 1px solid #EFEAE4;
+    margin-top: 1em;
+    padding-top: 1em;
+}
+.related_posts h2 {
+    margin-top: 0;
+    padding-top: 0;
+}
+.related_posts ol {
+    overflow: hidden;
+    zoom: 1;
+    list-style-type: none;
+    margin-left: 0;
+}
+.related_posts ol li {
+    float: left;
+    margin:0 0 0 10px;
+    padding-left: 10px;
+    border-left: 1px solid #efeae4;
+}
+.related_posts ol li:first-child {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+}
+
+/* LISTS
+----------------------------------------------- */
+/* quests - currently used on the burrito page */
+.entry .quest_list {
+    list-style-type: none;
+    margin: 5px 0; 
+}
+.entry .quest_list li {
+    margin: 0;
+    position: relative;
+    padding-left: 40px;
+    padding-right: 116px;
+}
+.quest_list li .rank {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2em;
+}
+.quest_list h3 {
+    padding-top: 22px;
+}
+.quest_list .rank span {
+    font-size: 0.8em;
+}
+.quest_list .adr {
+    margin-bottom: 0;
+}
+.quest_list img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid #E6E1DC;
+    background: #F0EBE6;
+    padding: 7px;
+}
+
+/* Town guides */
+.review_list {
+    background: #E7E1DE;
+    font-size: 22px; 
+    list-style-type: none !important; 
+    margin: 0 !important; 
+}
+.review_list h2 {
+    color: #413F3E;
+    font-weight: bold;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.review_list h2 span {
+    font-size: 14px;
+    font-weight: normal;
+}
+.review_list ul { 
+    background: #F9F7F5;
+    font-size: 13px;
+    list-style-type: none;
+    margin: 0;
+    padding-bottom: 1em;
+}
+.review_list .vcard { 
+    background: none;
+    padding-left: 0;
+    position: relative;
+    padding-left: 130px;
+}
+.review_list .vcard .summary {
+    float: left;
+    margin-right: 10px;
+}
+.review_list .vcard h3 { 
+    font-size: 16px; 
+    padding-top: 1em;
+}
+.review_list .vcard .adr p {
+    margin-bottom: 0;
+}
+.review_list img { 
+    background: #FFFFFF; 
+    border: 1px solid #EBEBEB; 
+    left: 0; 
+    margin-right: 16px; 
+    padding: 8px 8px 24px;
+    position: absolute; 
+    top: -2px;
+    /* rotate the box */
+    -webkit-transform: rotate(-9deg);
+    -moz-transform: rotate(-9deg);
+    -o-transform: rotate(-9deg);
+    transform: rotate(-9deg);
+    /* box shadow */
+    -webkit-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+    -moz-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+    -o-box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+    box-shadow: 2px 2px 4px rgba(0,0, 0, 0.3);
+}
+.review_list .date {
+    margin-top: 0.5em;
+    padding-top: 1em;
+    border-top: 1px solid #DBD3D0;
+    line-height: 1;
+}
+.review_list .alert {
+    margin-top: 0.5em;
+}
+
+/* Most wanted */
+#most-wanted li {
+    background: none;
+    padding: 0;
+}
+#most-wanted a {
+    display: block;
+	width: auto;
+}
+
+/* SIDEBAR
+----------------------------------------------- */
+#sidebox { 
+  font-size: 1.2em;
+  padding: 14px;
+	border: 1px solid #e6e1dc;
+	background: #f0ebe6; 
+}
+#sidebox p {
+	line-height: 1.6em;
+}
+
+/* FOOTER
+----------------------------------------------- */
+#footer a:link, 
+#footer a:visited { 
+    color: #4265A7; 
+    font-weight: bold; 
+}
+#footer a:hover { 
+    text-decoration: underline;
+}
+/* Columns */
+.footer-column {
+	float: left;
+	margin-right: 30px;
+	padding-bottom: 20px;
+	color: #413f3e;
+}
+#footer-about.footer-column { 
+    width: 337px; 
+}
+#footer-flickr.footer-column { 
+    width: 281px; 
+}
+#footer-search.footer-column {
+	margin: 0;
+	float: right;
+	width: 266px;
+}
+.footer-column h2 {
+	font-size: 1.6em;
+	border-bottom: 2px solid #dbd3d0;
+	padding-bottom: 2px;
+}
+.footer-column p {
+	margin: 15px 0;
+	font-size: 1.2em;
+	line-height: 1.5em;
+}
+/* Flickr */
+.flickr_badge_image {
+	float: left;
+	margin: 0 0 0 10px;
+	padding: 0;
+	line-height: 0;
+}
+#flickr_badge_image1.flickr_badge_image, #flickr_badge_image2.flickr_badge_image, #flickr_badge_image3.flickr_badge_image { 
+    margin: 15px 0 10px 10px; 
+}
+#flickr_badge_image1.flickr_badge_image, #flickr_badge_image4.flickr_badge_image { 
+    margin-left: 0; 
+}
+.flickr_badge_image img {
+	margin: 0;
+	padding: 5px;
+	border: 1px solid #ccc;
+	background: #f7f7f7;
+	line-height: 0;
+}
+#footer h2.widgettitle { 
+    margin-top: 0; 
+}
+.flickr-footer {
+  overflow: hidden;
+}
+#footer p {
+  margin: 15px 0 0 0;
+}
+.twitter-section {
+  margin-bottom: 15px;
+}
+.tweets iframe {
+    margin-top: 15px;
+}
+/* Search */
+#search_form input.search {
+	margin: 15px 0 0 0;
+	padding: 5px 2px;
+	width: 180px;
+	border: 1px solid #ded8d5;
+	background: #f3f3f3;
+	color: #555;
+}
+.entry #search_form {
+  margin-bottom: 15px;
+}
+#search_form input.search:focus { 
+    background: #fff; 
+}
+#search_form input#searchsubmit { 
+    margin: 0 0 0 5px; 
+}
+/* Copyright */
+#copyright {
+	display: block;
+	clear: both;
+	padding-top: 1px;
+	font-size: 1.1em;
+	border-top: 2px solid #dbd3d0;
+}
+#copyright a:link, #copyright a:visited {
+	border-bottom: 1px dotted;
+	text-decoration: none;
+}
+#copyright a:hover {
+	border-bottom: 1px solid;
+	text-decoration: none;
+}
