@@ -94,9 +94,23 @@ div#title a:hover {
 	width: 648px;
 	position: relative;
 }
+.hreview .post-header {
+    border-bottom: 1px solid #EFEAE4;
+    border-top: none;
+    padding: 0 0 15px;
+    margin: 0 0 15px;
+}
+.hreview .post-header h1 {
+    margin-left: 0;
+}
+.hreview .author {
+    margin: 3px 0 0;
+    color: #C0B2A5;
+    font-size: 1.2em;
+}
 .hreview .tags {
     position: absolute;
-    top: 21px;
+    top: 0;
     left: 0;
     font-size: 10px;
 }

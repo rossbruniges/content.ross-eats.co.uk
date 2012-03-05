@@ -1,8 +1,8 @@
-<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <div class="post-header">
- 		<h1 class="summary"><?php the_title(); ?></h1>
- 		<p class="author">by <strong class="reviewer vcard"><span class="fn"><?php printf(__ ( '%s', 'titan'), get_the_author()); ?></span></strong> on <abbr class="dtreviewed" title="<?php the_time(__ ( 'Y-m-d', 'titan')); ?>"><?php the_time(__ ( 'F jS, Y', 'titan')); ?></abbr></p>
- 	</div><!--end post header-->
+<div class="post-header">
+	<h1 class="summary"><?php the_title(); ?></h1>
+	<p class="author">by <strong class="reviewer vcard"><span class="fn"><?php printf(__ ( '%s', 'titan'), get_the_author()); ?></span></strong> on <abbr class="dtreviewed" title="<?php the_time(__ ( 'Y-m-d', 'titan')); ?>"><?php the_time(__ ( 'F jS, Y', 'titan')); ?></abbr></p>
+</div><!--end post header-->
+<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>    
  	<div class="entry clear">
  	    <?php $details = get_post_custom($post->ID); ?>
  		<div id="images">
