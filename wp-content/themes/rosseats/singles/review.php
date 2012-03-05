@@ -1,6 +1,5 @@
 <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <div class="post-header">
- 	    <div class="tags"><?php the_tags( '<span>Tags</span> <p>', ', ', '</p>'); ?></div>
  		<h1 class="summary"><?php the_title(); ?></h1>
  		<p class="author">by <strong class="reviewer vcard"><span class="fn"><?php printf(__ ( '%s', 'titan'), get_the_author()); ?></span></strong> on <abbr class="dtreviewed" title="<?php the_time(__ ( 'Y-m-d', 'titan')); ?>"><?php the_time(__ ( 'F jS, Y', 'titan')); ?></abbr></p>
  	</div><!--end post header-->
@@ -29,6 +28,7 @@
                 <?php related_posts(); ?>
             </div>
         <? endif; ?>
+        <div class="tags"><?php the_tags( '<span>Tags</span> <p>', ', ', '</p>'); ?></div>
  		<?php wp_link_pages(); ?>
  	</div><!--end entry-->
  	<div class="meta clear">

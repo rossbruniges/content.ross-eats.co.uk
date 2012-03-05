@@ -90,8 +90,18 @@ div#title a:hover {
     width: 960px;
 }
 .hreview .post {
-  float: left;
+    float: left;
 	width: 648px;
+	position: relative;
+}
+.hreview .tags {
+    position: absolute;
+    top: 21px;
+    left: 0;
+    font-size: 10px;
+}
+.hreview .tags a {
+    font-weight: normal;
 }
 .alert {
     padding: 8px 14px;
