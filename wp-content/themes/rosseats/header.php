@@ -72,7 +72,7 @@
     if (is_single()) {
         $content_class = "";
         if (in_category('Reviews') || in_category('London Burritos')) {
-            $content_class = "hreview";
+            $content_class = "hreview hentry";
         }
     }
 ?>

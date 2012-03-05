@@ -29,7 +29,7 @@
     	<?php echo $details['urbanspoon'][0]; ?>
     <?php endif; ?>
 </div>
-<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>    
+<div id="post-<?php the_ID(); ?>" class="post">    
  	<div class="entry clear">
  		<div id="images">
  		    <?php 
