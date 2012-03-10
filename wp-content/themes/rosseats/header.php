@@ -12,8 +12,9 @@
 	<?php else : ?>
 		<title><?php wp_title($sep = ''); ?> | <?php bloginfo('name');?></title>
 	<?php endif; ?>
-
+    
 	<!-- Basic Meta Data -->
+	<meta name="viewport" content="initial-scale=1.0, width=device-width">
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="copyright" content="<?php
 		esc_attr( sprintf(
