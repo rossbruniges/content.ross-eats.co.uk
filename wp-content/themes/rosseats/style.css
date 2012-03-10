@@ -596,6 +596,7 @@ div.vcard .adr p {
     }
     #content {
         width: auto !important;
+        float: none;
     }
     div.vcard {
         width: auto;
@@ -673,6 +674,34 @@ div.vcard .adr p {
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
+    }
+    #sidebar {
+        width: auto;
+        float: none;
+    }
+    #sidebar .widget_categories {
+        float: right;
+        width: 48%;
+    }
+    #sidebar .widgettitle {
+        margin-top: 0;
+    }
+    #sidebar .widget_tag_cloud {
+        clear: both;
+        padding-top: 10px;
+        margin-top: 0;
+    }
+    #sidebox {
+        float: left;
+        width: 50%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin-right: 2%;
+    }
+    #sidebox img {
+        width: 100%;
+        height: auto;
     }
     #footer-about.footer-column,
     #footer-flickr.footer-column,
