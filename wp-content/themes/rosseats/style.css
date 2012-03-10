@@ -722,6 +722,10 @@ div.vcard .adr p {
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
+    div.c-body {
+        margin-left: 60px;
+        width: auto;
+    }
     #sidebar {
         width: auto;
         float: none;
