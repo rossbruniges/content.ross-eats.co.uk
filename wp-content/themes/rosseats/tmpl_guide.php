@@ -38,7 +38,7 @@ then displays them in a lovely ordered list
 			            
 			            
 			            <p><?php echo $review_details['Restaurant cost'][0]; ?></p>
-			            <a href="<?php echo get_permalink(); ?>">Read my review</a>
+			            <a href="<?php echo get_permalink(); ?>">Read my review <?php the_post_thumbnail(array(80,810)) ?></a>
 			            </div>
 			            <div class="adr">
                  		    <?php echo $review_details['Restaurant address'][0]; ?>
@@ -49,7 +49,7 @@ then displays them in a lovely ordered list
                             <?php echo $review_details['post_alert'][0]; ?>
                         </div>
                         <?php endif; ?>
-                        <?php the_post_thumbnail(array(80,810)) ?>
+                        
 			        </li>
 			    <?php
 			        
