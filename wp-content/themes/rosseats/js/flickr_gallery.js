@@ -43,7 +43,7 @@ ross_eats.photo_gallery = function() {
             gallery_length = data.photoset.photo.length;
             
             var images = [],
-			    gallery_string = '<ul id="food_gallery">',
+			    gallery_string = '<h2>In photos</h2><ul id="food_gallery">',
 				flickr = "<a href='" + original_href + "'>View original images on <span class='f'>flick<span>r</span></span></a>",
 			    legend = '<div id="food_legend">Showing <span>1</span> of ' + gallery_length + ' ' + flickr + '</div>',
 			    prev_button = "<button id='prev'>&#9668;<span>Previous photo</span></button>",
