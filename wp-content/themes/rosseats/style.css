@@ -233,6 +233,10 @@ div.vcard .adr p {
 .active {
   position: relative;
 }
+#images h2 {
+    text-transform: uppercase;
+    padding-top: 0;
+}
 #images p {
   margin-bottom: 0;
 }
@@ -281,7 +285,7 @@ div.vcard .adr p {
 }
 #images button {
   position: absolute;
-  top: 7px;
+  top: 32px;
   left: 0px;
   height: 194px;
   /* width needed for IE otherwise buttons go 100% width */
@@ -581,4 +585,100 @@ div.vcard .adr p {
 #copyright a:hover {
 	border-bottom: 1px solid;
 	text-decoration: none;
+}
+@media screen and (max-width:600px) {
+    body {
+        min-width: 0;
+    }
+    .wrapper {
+        margin: 0 10px;
+        width: auto;
+    }
+    #content {
+        width: auto !important;
+    }
+    div.vcard {
+        width: auto;
+        float: none;
+        margin-bottom: 1em;
+        overflow: hidden;
+    }
+    div.vcard .tel {
+        display: block;
+    }
+    div.vcard .deets,
+    div.vcard .find {
+        width: 50%;
+        float: left;
+    }
+    div.vcard .find img {
+        width: 100%;
+        height: auto;
+    }
+    .hreview .post {
+        width: auto;
+        float: none;
+    }
+    .entry {
+        width: auto;
+        margin: 0;
+    }
+    .entry .photo_frame {
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .entry .photo_frame img {
+        width: 100%;
+        height: auto;
+        max-width: none;
+    }
+    .hreview .tags {
+        position: static;
+        float: none;
+        width: auto;
+    }
+    .hreview .tags span {
+        color: #444;
+    }
+    #images {
+        float: none;
+        width: 100%;
+        margin-left: 0;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #food_gallery,
+    #food_gallery li {
+        width: auto;
+        float: none;
+    }
+    #images img {
+        width: 100%;
+        height: auto;
+    }
+    form#commentform {
+        margin-left: 0;
+    }
+    .comment-number {
+        padding-top: 0;
+    }
+    input#author, 
+    input#email, 
+    input#url,
+    form#commentform textarea {
+        width: 100%;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    #footer-about.footer-column,
+    #footer-flickr.footer-column,
+    #footer-search.footer-column {
+        width: auto;
+        float: none;
+        margin-right: 0;
+    }  
 }

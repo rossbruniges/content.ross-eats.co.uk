@@ -5,6 +5,7 @@
 </div><!--end post header-->
 <div class="vcard">
     <h2>At a glance</h2>
+    <div class="deets">
     <p class="fn org">
     <?php
         if (count($details['Restaurant URL'])) {
@@ -18,6 +19,8 @@
      <p><strong>Reservations: </strong> <span class="tel"><?php echo $details['Restaurant telephone'][0] ?></span></p>
      <p><strong>Rating: </strong> <span class="rating"><span class="value"><?php echo $details['Restaurant rating'][0] ?></span> out of <span class="best">10</span></span></p>
      <p><strong>Cost :</strong> <?php echo $details['Restaurant cost'][0] ?></p>
+     </div>
+     <div class="find">
      <h3>Location</h3>
      <div class="adr">
      	<?php echo $details['Restaurant address'][0] ?>
@@ -28,10 +31,17 @@
          <h3>Don't just take my word for it</h3>
     	<?php echo $details['urbanspoon'][0]; ?>
     <?php endif; ?>
+    </div>
 </div>
 <div id="post-<?php the_ID(); ?>" class="post">    
  	<div class="entry clear">
+ 	    <?php if (count($details['post_alert'])) : ?>
+            <div class="alert">
+                <?php echo $details['post_alert'][0]; ?>
+            </div>
+        <?php endif; ?>
  		<div id="images">
+ 		    <h2>In photos</h2>
  		    <?php 
  		        the_post_thumbnail(array(240,240)); 
  			    $attachment = getImageAttachmentData(get_the_ID());
@@ -40,11 +50,7 @@
  			<a href="http://www.flickr.com/photos/thecssdiv/sets/<?php echo $details['Restaurant flickr group'][0] ?>/">More pictures</a>
  		</div>
  		<div class="description">
-            <?php if (count($details['post_alert'])) : ?>
-                <div class="alert">
-                    <?php echo $details['post_alert'][0]; ?>
-                </div>
-            <?php endif; ?>
+            
  			<?php the_content(__( 'read more...', 'titan')); ?>
  			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Thought this was good enough to share" data-via="ross_eats">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
