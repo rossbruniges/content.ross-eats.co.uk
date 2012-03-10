@@ -620,7 +620,8 @@ div.vcard .adr p {
         width: auto;
         float: none;
     }
-    .entry {
+    .entry,
+    #content .entry.page {
         width: auto;
         margin: 0;
     }
