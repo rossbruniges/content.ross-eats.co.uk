@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: google analytics, analytics, report, analytics report, stats, statistics, visitors, pageviews, visits
 Requires at least: 3.0.0
 Tested up to: 3.3.1
-Stable tag: 1.0
+Stable tag: 1.0.2
 
 Reporteur is a simple reporting tool for your Google Analytics account. It analyzes the live data from Google Analytics API and summarizes it in WP.
 
@@ -29,7 +29,7 @@ This section describes how to install the plugin and get it working.
 3. Check your Reporteur page.
 4. Enter your Google Analytics email and password.
 5. Select the report you want to see
-6. Enjoy 
+6. Enjoy. 
 
 == Frequently Asked Questions ==
 
@@ -50,6 +50,12 @@ So if someone visits your website 2 times in a month it counts as 2 visits.
 3. Oh, and you can hide the details and settings for your convenience.
 
 == Changelog ==
+
+= 1.0.2 =
+* plugins_url update for those who have a non-default plugin directory.
+
+= 1.0.1 =
+* Small date fix which occured only on 31st of March when checking for last month.
 
 = 1.0 =
 * Everything is created and working normally.

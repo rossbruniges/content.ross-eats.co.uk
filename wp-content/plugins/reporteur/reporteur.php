@@ -3,7 +3,7 @@
 Plugin Name: Reporteur
 Plugin URI: http://stild.com/reporteur
 Description: Reporteur is a simple reporting tool for your Google Analytics account. It will show you a snapshot of pageviews and visits for different timespans at a glance. And for more, there is also a detailed report including top posts, search keywords, and top sources, and visiting countries for each timespan. That's all folks.
-Version: 1.0
+Version: 1.0.2
 Author: @stildv
 Author URI: http://stild.com/
 
@@ -69,8 +69,9 @@ function GARs_admin_plugin_options($info_message = '') {
 <div class="GARcontainer">
 <div class="header">
 	<h3><a href="http://stild.com/reporteur" title="Reporteur | Plugin Homepage" target="_blank">Reporteur</a></h3>
-	<h6>v1.0 || 
-	<a href="http://stild.com/reporteur" target="_blank">plugin homepage</a> || 
+	<h6>v1.0.2 || 
+	<a href="http://stild.com/reporteur" target="_blank">plugin home</a> || 
+	<a href="http://wordpress.org/extend/plugins/reporteur/" target="_blank">wordpress plugins</a> || 
 	<a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=A6MQWR8DK4PFC" target="_blank">donate via paypal</a> || 
 	by <a href="https://twitter.com/stildv" target="_blank">@stildv</a> of <a href="http://stild.com" target="_blank">stild.com</a> || 
 	<a href="#" class="switch_details">hide details & settings</a></h6>
@@ -126,12 +127,14 @@ else {
 /****************************************************************************** MASSIVE FANTASTIC DATA CALLING VIA GAPI ****/
 add_action('admin_head', 'get_data_from_gapi');
 function get_data_from_gapi() {
+
+$plugins_dir = plugins_url();
 ?>
 <script type="text/javascript">
 var containerId = '#atom-tabs-container';
 var tabsId = '#atom-tabs';
-var loadingDiv = '<span class="loading"><img src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/reporteur/img/loading.gif"/>Loading. Please Wait...</span>';
-var loadingSpan = '<span class="loading"><img src="<?php echo get_bloginfo('wpurl'); ?>/wp-content/plugins/reporteur/img/loading.gif"/></span>';
+var loadingDiv = '<span class="loading"><img src="<?php echo $plugins_dir; ?>/reporteur/img/loading.gif"/>Loading. Please Wait...</span>';
+var loadingSpan = '<span class="loading"><img src="<?php echo $plugins_dir; ?>/reporteur/img/loading.gif"/></span>';
 
 jQuery(document).ready(function($) {
 
@@ -374,7 +377,7 @@ function callDataFromGapi($getmode, $getdays, $dimensions, $metrics, $orderby, $
 			break;
 		case "lastmonth":
 			$data = getDataFromGapi($getmode, $dimensions, $metrics, $orderby, 
-				date("Y-m-01", strtotime("-1 month", strtotime(date("Y-m-d")))), 
+				date("Y-m-01", strtotime("-1 day", strtotime(date("Y-m-01")))), 
 				date("Y-m-d", strtotime("-1 day", strtotime(date("Y-m-01"))))
 			);
 			break;
