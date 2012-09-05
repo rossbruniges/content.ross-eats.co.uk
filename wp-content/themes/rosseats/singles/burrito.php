@@ -23,9 +23,14 @@
      		<p class="postal-code"><?php echo $details['Postcode'][0] ?></p>
      	</div>
      	<?php
+     	    if (count($details['squaremeal']) || count($details['urbanspoon'])) {
+                 echo "<h3>Don't just take my word for it</h3>";
+            }
      	    if ($details['urbanspoon'][0] != "") {
-     		    echo "<h3>Don't just take my word for it</h3>";
           		echo $details['urbanspoon'][0];
+     		}
+     		if ($details['squaremeal'][0] != "") {
+          		echo $details['squaremeal'][0];
      		}
      	?>
     </div>
