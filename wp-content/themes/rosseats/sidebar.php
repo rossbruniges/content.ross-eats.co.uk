@@ -16,6 +16,7 @@
 		     ?>
 		<?php endif; ?>
 	</div><!--end sidebox-->
+	
 	<ul>
 	<?php if ( ! dynamic_sidebar( 'normal_sidebar' ) ) : ?>
 		<li class="widget widget_recent_entries">
@@ -38,6 +39,10 @@
 				<?php wp_get_archives( 'type=monthly' ); ?>
 			</ul>
 		</li>
-	<?php endif; ?>
+		<?php endif; ?>
+		<li class="widget widget_archive">
+    	    <h2 class="widgettitle"><?php _e('Search', 'titan'); ?></h2>
+    	    <?php if (is_file(STYLESHEETPATH . '/searchform.php')) include (STYLESHEETPATH . '/searchform.php'); else include(TEMPLATEPATH . '/searchform.php'); ?>
+        </li>
 	</ul>
 </div><!--end sidebar-->
