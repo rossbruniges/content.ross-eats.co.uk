@@ -6,8 +6,8 @@ Plugin URI: http://yarpp.org/
 Donate link: http://tinyurl.com/donatetomitcho
 Tags: related, posts, post, pages, page, RSS, feed, feeds
 Requires at least: 3.3
-Tested up to: 3.5
-Stable tag: 4.0.2
+Tested up to: 3.6
+Stable tag: 4.0.4
 License: GPLv2 or later
 
 Display a list of related entries on your site and feeds based on a unique algorithm. Now with thumbnail support built-in!
@@ -239,6 +239,7 @@ YARPP is currently localized in the following languages:
 * Russian (`ru_RU`) by Marat Latypov of [blogocms.ru](http://blogocms.ru)
 * Serbian (`sr_RS`) by [Zarko Zivkovic](http://www.zarkozivkovic.com/) 
 * Slovak (`sk_SK`) by [Forex](http://www.eforex.sk/)
+* Slovenian (`sl_SI`) by [Silvo Katalenić](http://www.twitter.com/silvoslaf)
 * Spanish (`es_ES`) by Rene of [WordPress Webshop](http://wpwebshop.com)
 * Swedish (`sv_SE`) by Max Elander
 * Turkish (`tr_TR`) by [Nurullah](http://www.ndemir.com) and [Barış Ünver](http://beyn.org/)
@@ -256,6 +257,25 @@ YARPP is currently localized in the following languages:
 If you are a bilingual speaker of English and another language and an avid user of YARPP, I would love to talk to you about localizing YARPP! Localizing YARPP can be pretty easy using [the Codestyling Localization plugin](http://www.code-styling.de/english/development/wordpress-plugin-codestyling-localization-en). Please [contact me](mailto:yarpp@mitcho.com) *first* before translating to make sure noone else is working on your language. Thanks!
 
 == Changelog ==
+
+= 4.0.4 =
+* [Bugfix](https://wordpress.org/support/topic/yarp-403-breaks-paginated-posts): 4.0.3 broke some paginated post displays
+* [Bugfix](https://wordpress.org/support/topic/custom-post-type-support-on-widget): custom post type support was not working properly in widget displays
+* Bugfix: widget control JS was not working right when first adding a widget
+* Added ability to set widget-specific heading for the thumbnails view, [by request](https://wordpress.org/support/topic/yarpp-on-pages-in-sidebar-even-when-turned-off-in-settings)
+* Added the filter `yarpp_results`
+* Localizations:
+	* Updated French localization and stopword list
+	* Added Slovenian (`sl_SI`) localization by [Silvo Katalenić](http://www.twitter.com/silvoslaf)
+* Bugfix: forces the DB Cache Reloaded (Fix) plugins to flush when necessary
+
+= 4.0.3 =
+* Bugfix: on sites where custom templates are not available, the "thumbnails" display option would get reset when visiting the YARPP settings page
+* [Bugfix](http://wordpress.org/support/topic/yarpp-css-is-delayed-or-doesnt-load): the CSS for YARPP's thumbnails display would load at the foot of the page, and therefore would cause some style-flashing. This is fixed for automatic includes, but not for widgets or manual calls.
+* Restoration of the `$post` global after YARPP is now more robust. Fixes the display of incorrect metadata on some complex themes.
+* YARPP template files no longer recognize `Template Name` fields in their headers, instead using `YARPP Template`. This is to avoid confusion with regular page templates.
+* Added "Related Posts" meta box to other "auto display" post types
+* Updated Polish localization
 
 = 4.0.2 =
 * [Bugfix](http://wordpress.org/support/topic/yarpp-doesnt-update-suggestions-with-older-posts): cache should be cleared when the "show only previous posts?" option is changed
@@ -292,7 +312,7 @@ If you are a bilingual speaker of English and another language and an avid user 
 	* A new design for the template chooser
 	* Example code display is now hidden by default; turn them back on from the "screen options" tab.
 	* A new "copy templates" button allows one-button installation of bundled templates into the current theme, if filesystem permissions make it possible.
-	* Header information in YARPP custom templates are now displayed to users in the settings UI. Available fields are `Template Name`, `Description`, `Author`, `Author URI`, in the same format as plugin and theme file headers. See bundled templates for examples.
+	* Header information in YARPP custom templates are now displayed to users in the settings UI. Available fields are `YARPP Template`, `Description`, `Author`, `Author URI`, in the same format as plugin and theme file headers. See bundled templates for examples.
 * Code cleanup:
 	* Settings screen UI have been rewritten to use `div`s rather than `table`s!
 	* Inline help in settings screen now use WordPress pointers

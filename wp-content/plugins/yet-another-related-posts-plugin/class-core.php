@@ -43,10 +43,11 @@ class YARPP {
 		add_filter( 'the_content', array( $this, 'the_content' ), 1200 );
 		add_filter( 'the_content_feed', array( $this, 'the_content_feed' ), 600 );
 		add_filter( 'the_excerpt_rss', array( $this, 'the_excerpt_rss' ), 600 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'maybe_enqueue_thumbnails' ) );
 
 		// register yarpp-thumbnail size, if theme has not already
 		// @todo: make these UI-configurable?
-		if ( false === $this->thumbnail_size() ) {
+		if ( !($dimensions = $this->thumbnail_dimensions()) || isset($dimensions['_default']) ) {
 			$width = 120;
 			$height = 120;
 			$crop = true;
@@ -60,6 +61,7 @@ class YARPP {
 		if ( is_admin() ) {
 			require_once(YARPP_DIR . '/class-admin.php');
 			$this->admin = new YARPP_Admin( $this );
+			$this->enforce();
 		}
 	}
 		
@@ -280,6 +282,10 @@ class YARPP {
 		return current_theme_supports( 'post-thumbnails', 'post' );
 	}
 	
+	function diagnostic_custom_templates() {
+		return count( $this->admin->get_templates() );
+	}
+	
 	function diagnostic_happy() {
 		$stats = $this->cache->stats();
 
@@ -296,17 +302,58 @@ class YARPP {
 		return defined('YARPP_GENERATE_THUMBNAILS') && YARPP_GENERATE_THUMBNAILS;
 	}
 	
-	function thumbnail_size() {
+	private $default_dimensions = array(
+		'width' => 120, 
+		'height' => 120,
+		'crop' => false, // @todo true for crop?
+		'size' => '120x120',
+		'_default' => true
+	);
+	function thumbnail_dimensions() {
 		global $_wp_additional_image_sizes;
 		if ( !isset($_wp_additional_image_sizes['yarpp-thumbnail']) )
-			return false;
-		return $_wp_additional_image_sizes['yarpp-thumbnail'];
+			return $this->default_dimensions;
+
+		$dimensions = $_wp_additional_image_sizes['yarpp-thumbnail'];
+		$dimensions['size'] = 'yarpp-thumbnail';
+		
+		// ensure YARPP dimensions format:
+		$dimensions['width'] = (int) $dimensions['width'];
+		$dimensions['height'] = (int) $dimensions['height'];
+		return $dimensions;
+	}
+
+	function maybe_enqueue_thumbnails() {
+		if ( is_feed() )
+			return;
+
+		$auto_display_post_types = $this->get_option( 'auto_display_post_types' );
+
+		// if it's not an auto-display post type, return
+		if ( !in_array( get_post_type(), $auto_display_post_types ) )
+			return;
+
+		if ( !is_singular() && !(
+			  $this->get_option('auto_display_archive') &&
+			  ( is_archive() || is_home() )
+			) )
+			return;
+
+		if ( $this->get_option('template') !== 'thumbnails' )
+			return;
+
+		$this->enqueue_thumbnails( $this->thumbnail_dimensions() );
+	}
+
+	function enqueue_thumbnails( $dimensions ) {
+		wp_enqueue_style( "yarpp-thumbnails-" . $dimensions['size'], plugins_url( 'styles-thumbnails.php?' . http_build_query( array( 'width' => $dimensions['width'], 'height' => $dimensions['height'] ) ), __FILE__ ), array(), YARPP_VERSION, 'all' );
 	}
 	
 	// code based on Viper's Regenerate Thumbnails plugin
-	function ensure_resized_post_thumbnail( $post_id, $size, $dimensions ) {
+	// $dimensions must be an array with size, crop, height, width attributes
+	function ensure_resized_post_thumbnail( $post_id, $dimensions ) {
 		$thumbnail_id = get_post_thumbnail_id( $post_id );
-		$downsized = image_downsize( $thumbnail_id, $size );
+		$downsized = image_downsize( $thumbnail_id, $dimensions['size'] );
 		if ( $dimensions['crop'] && $downsized[1] && $downsized[2] && 
 			( $downsized[1] != $dimensions['width'] || $downsized[2] != $dimensions['height'] ) ) {
 			// we want to trigger recomputation of the thumbnail here
@@ -320,6 +367,34 @@ class YARPP {
 				}
 			}
 		}
+	}
+	
+	private $templates = null;
+	public function get_templates() {
+		if ( is_null($this->templates) ) {
+			$this->templates = glob(STYLESHEETPATH . '/yarpp-template-*.php');
+			// if glob hits an error, it returns false.
+			if ( $this->templates === false )
+				$this->templates = array();
+			// get basenames only
+			$this->templates = array_map(array($this, 'get_template_data'), $this->templates);
+		}
+		return (array) $this->templates;
+	}
+	
+	public function get_template_data( $file ) {
+		$headers = array(
+			'name' => 'YARPP Template',
+			'description' => 'Description',
+			'author' => 'Author',
+			'uri' => 'Author URI',
+		);
+		$data = get_file_data( $file, $headers );
+		$data['file'] = $file;
+		$data['basename'] = basename($file);
+		if ( empty($data['name']) )
+			$data['name'] = $data['basename'];
+		return $data;
 	}
 	
 	/*
@@ -357,7 +432,8 @@ class YARPP {
 	
 		$this->version_info(true);
 	
-		update_option('yarpp_version',YARPP_VERSION);
+		update_option( 'yarpp_version', YARPP_VERSION );
+		update_option( 'yarpp_upgraded', true );
 		$this->delete_transient( 'yarpp_optin' );
 	}
 	
@@ -574,6 +650,31 @@ class YARPP {
 		delete_transient('yarpp_version_info');
 	}
 	
+	/*
+	 * UTILITIES
+	 */
+	
+	private $current_post;
+	private $current_query;
+	private $current_pagenow;
+	// so we can return to normal later
+	function save_post_context() {
+		global $wp_query, $pagenow, $post;
+		$this->current_query = $wp_query;
+		$this->current_pagenow = $pagenow;
+		$this->current_post = $post;
+	}
+	function restore_post_context() {
+		global $wp_query, $pagenow, $post;
+		$wp_query = $this->current_query; unset($this->current_query);
+		$pagenow = $this->current_pagenow; unset($this->current_pagenow);
+		if ( isset($this->current_post) ) {
+			$post = $this->current_post;
+			setup_postdata( $post );
+			unset($this->current_post);
+		}
+	}
+	
 	private $post_types = null;
 	function get_post_types( $field = 'name' ) {
 		if ( is_null($this->post_types) ) {
@@ -671,7 +772,7 @@ class YARPP {
 			'url' => get_bloginfo('url'),
 			'plugins' => array(
 				'active' => implode( '|', get_option( 'active_plugins', array() ) ),
-				'sitewide' => implode( '|', get_site_option( 'active_sitewide_plugins', array() ) )
+				'sitewide' => implode( '|', array_keys( get_site_option( 'active_sitewide_plugins', array() ) ) )
 			),
 			'pools' => $settings['pools']
 		);
@@ -746,8 +847,6 @@ class YARPP {
 		// if we're already in a YARPP loop, stop now.
 		if ( $this->cache->is_yarpp_time() || $this->cache_bypass->is_yarpp_time() )
 			return false;
-
-		global $wp_query, $pagenow;
 	
 		$this->enforce();
 
@@ -777,10 +876,9 @@ class YARPP {
 			$this->active_cache->begin_yarpp_time($reference_ID, $args);
 		}
 	
-		// so we can return to normal later
-		$current_query = $wp_query;
-		$current_pagenow = $pagenow;
-	
+		$this->save_post_context();
+
+		global $wp_query;	
 		$wp_query = new WP_Query();
 		if ( YARPP_NO_RELATED == $cache_status ) {
 			// If there are no related posts, get no query
@@ -794,7 +892,13 @@ class YARPP {
 				'post_type' => ( isset($args['post_type']) ? $args['post_type'] : $this->get_post_types() )
 			));
 		}
-		$this->prep_query( $current_query->is_feed );
+		$this->prep_query( $this->current_query->is_feed );
+		
+		$wp_query->posts = apply_filters('yarpp_results', $wp_query->posts, array(
+			'function' => 'display_related',
+			'args' => $args,
+			'related_ID' => $reference_ID));
+		
 		$related_query = $wp_query; // backwards compatibility
 		$related_count = $related_query->post_count;
 
@@ -829,11 +933,9 @@ class YARPP {
 		} else {
 			$this->active_cache->end_yarpp_time(); // YARPP time is over... :(
 		}
-	
-		// restore the older wp_query.
-		$wp_query = $current_query; unset($current_query); unset($related_query);
-		wp_reset_postdata();
-		$pagenow = $current_pagenow; unset($current_pagenow);
+
+		unset( $related_query );
+		$this->restore_post_context();
 	
 		if ( $related_count > 0 && $promote_yarpp && $domain != 'metabox' )
 			$output .= "<p>".sprintf(__("Related posts brought to you by <a href='%s'>Yet Another Related Posts Plugin</a>.",'yarpp'), 'http://yarpp.org')."</p>\n";
@@ -889,6 +991,12 @@ class YARPP {
 			'showposts' => $limit,
 			'post_type' => ( isset($args['post_type']) ? $args['post_type'] : $this->get_post_types() )
 		));
+	
+		$related_query->posts = apply_filters('yarpp_results', $related_query->posts, array(
+			'function' => 'get_related',
+			'args' => $args,
+			'related_ID' => $reference_ID));
+	
 		$this->active_cache->end_yarpp_time(); // YARPP time is over... :(
 	
 		return $related_query->posts;
@@ -928,6 +1036,12 @@ class YARPP {
 			'showposts' => 1,
 			'post_type' => ( isset($args['post_type']) ? $args['post_type'] : $this->get_post_types() )
 		));
+		
+		$related_query->posts = apply_filters('yarpp_results', $related_query->posts, array(
+			'function' => 'related_exist',
+			'args' => $args,
+			'related_ID' => $reference_ID));
+		
 		$return = $related_query->have_posts();
 		unset($related_query);
 		$this->active_cache->end_yarpp_time(); // YARPP time is over. :(
@@ -939,9 +1053,7 @@ class YARPP {
 	 * @param (array) $args
 	 * @param (bool) $echo
 	 */
-	function display_demo_related($args = array(), $echo = true) {
-		global $wp_query;
-	
+	function display_demo_related($args = array(), $echo = true) {	
 		if ( $this->cache_bypass->demo_time ) // if we're already in a demo YARPP loop, stop now.
 			return false;
 	
@@ -957,6 +1069,7 @@ class YARPP {
 			$output .= "yarpp-related-{$domain}";
 		$output .= "'>\n";
 
+		global $wp_query;
 		$wp_query = new WP_Query();
 		$wp_query->query('');
 	
@@ -1119,16 +1232,23 @@ class YARPP {
 	
 	// @since 3.3: use PHP serialized format instead of JSON
 	function version_info( $enforce_cache = false ) {
-		if (false === ($result = $this->get_transient('yarpp_version_info')) || $enforce_cache) {
-			$version = YARPP_VERSION;
-			$remote = wp_remote_post("http://yarpp.org/checkversion.php?format=php&version={$version}");
-			
-			if (is_wp_error($remote))
-				return false;
-			
-			if ( $result = @unserialize($remote['body']) )
-				$this->set_transient('yarpp_version_info', $result, 60 * 60 * 24);
+		if ( !$enforce_cache && false !== ($result = $this->get_transient('yarpp_version_info')) )
+			return $result;
+
+		$version = YARPP_VERSION;
+		$remote = wp_remote_post("http://yarpp.org/checkversion.php?format=php&version={$version}");
+		
+		if ( is_wp_error($remote) ||
+			 wp_remote_retrieve_response_code( $remote ) != 200 ||
+			 !isset($remote['body']) ) {
+			// try again later
+			$this->set_transient('yarpp_version_info', null, 60 * 60);
+			return false;
 		}
+		
+		if ( $result = @unserialize($remote['body']) )
+			$this->set_transient('yarpp_version_info', $result, 60 * 60 * 24);
+
 		return $result;
 	}
 
@@ -1138,7 +1258,10 @@ class YARPP {
 			return true;
 
 		$remote = wp_remote_post( 'http://yarpp.org/optin/2/', array( 'body' => $this->optin_data() ) );
-		if ( is_wp_error($remote) || !isset($remote['body']) || $remote['body'] != 'ok' ) {
+		if ( is_wp_error($remote) ||
+			 wp_remote_retrieve_response_code( $remote ) != 200 ||
+			 !isset($remote['body']) ||
+			 $remote['body'] != 'ok' ) {
 			// try again later
 			$this->set_transient( 'yarpp_optin', null, 60 * 60 );
 			return false;
@@ -1169,11 +1292,24 @@ class YARPP {
 			if ( !is_null( $data ) )
 				update_option( $transient, $data );
 		}
+		$this->kick_other_caches();
 	}
 	
 	private function delete_transient( $transient ) {
 		delete_option( $transient );
 		delete_option( $transient . '_timeout' );
+	}
+	
+	// 4.0.4: helper function to force other caching systems which are too aggressive
+	// <cough>DB Cache Reloaded (Fix)</cough> to flush when YARPP transients are set.
+	private function kick_other_caches() {
+		if ( class_exists( 'DBCacheReloaded' ) ) {
+			global $wp_db_cache_reloaded;
+			if ( is_object( $wp_db_cache_reloaded ) && is_a( $wp_db_cache_reloaded, 'DBCacheReloaded' ) ) {
+				// if DBCR offered a more granualar way of just flushing options, I'd love that.
+				$wp_db_cache_reloaded->dbcr_clear();
+			}
+		}
 	}
 	
 	// 3.5.2: clean_pre is deprecated in WP 3.4, so implement here.
