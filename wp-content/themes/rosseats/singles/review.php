@@ -27,15 +27,15 @@
      </div>
      <p><strong>Map</strong></p>
      <img src="http://maps.google.com/maps/api/staticmap?zoom=14&size=236x236&maptype=roadmap&markers=color:blue|<?php echo $details['Restaurant Geo lat'][0] ?>,<?php echo $details['Restaurant Geo long'][0] ?>&sensor=false" width="238" height="238" alt="Location map" />
-     <?php 
-     if (count($details['squaremeal']) || count($details['urbanspoon'])) {
+     <?php
+     if (array_key_exists('squaremeal', $details) || array_key_exists('urbanspoon', $details)) {
          print "<h3>Don't just take my word for it</h3>";
     }
      ?>
-     <?php if (count($details['urbanspoon'])) : ?>
+     <?php if (array_key_exists('urbanspoon', $details)) : ?>
     	<?php echo $details['urbanspoon'][0]; ?>
     	<?php endif; ?>
-    	<?php if (count($details['squaremeal'])): ?>
+    	<?php if (array_key_exists('squaremeal', $details)) : ?>
     	<?php echo $details['squaremeal'][0]; ?>
     	<?php endif; ?>
     </div>

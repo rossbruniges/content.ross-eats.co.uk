@@ -3,7 +3,7 @@
     <div id="sidebox">
 		<?php if (is_home() == 'true' ): ?>
 		  <?php
-			$last_post = get_posts($numberposts=1&$orderby=date&$order=ASC);
+			$last_post = get_posts($numberposts=1&$orderby="date"&$order="ASC");
 	        echo get_the_post_thumbnail($last_post[0]->ID, array(236,236));
 	        $attachment = getImageAttachmentData($last_post[0]->ID);
 	        echo '<p>' . $attachment->description . ' from ' . $attachment->title . '</p>';

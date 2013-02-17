@@ -15,7 +15,7 @@
 	        <h2><?php _e('Flickr', 'titan'); ?></h2>
 		    <div class="flickr-footer">
 		        <?php
-		            $url = "http://www.flickr.com/badge_code_v2.gne?count=6&display=latest&size=s&layout=x&source=user_tag&user=92146798%40N00&tag=ross-eats";
+		            $url = "http://www.flickr.com/badge_code_v2.gne?count=9&display=latest&size=s&layout=x&source=user_tag&user=92146798%40N00&tag=ross-eats";
 		            $html = file_get_contents($url);
 			        preg_match_all("/<div.*div>/", $html, $matches);
 			        foreach($matches[0] as $div) {
@@ -51,7 +51,7 @@
 		</div><!--end copyright-->
 	</div><!--end wrapper-->
 </div><!--end footer-->
-<?php if (in_category('Reviews')) : ?>
+<?php if (!is_front_page() && in_category('Reviews')) : ?>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/jquery-1.7.1.min.js"></script>
     <script src="<?php echo get_stylesheet_directory_uri(); ?>/js/flickr_gallery.js"></script>
 <?php endif; ?>

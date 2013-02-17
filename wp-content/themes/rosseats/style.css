@@ -526,14 +526,15 @@ div.vcard .adr p {
 /* Flickr */
 .flickr_badge_image {
 	float: left;
-	margin: 0 0 0 10px;
+	margin: 0 0 10px 10px;
 	padding: 0;
 	line-height: 0;
 }
-#flickr_badge_image1.flickr_badge_image, #flickr_badge_image2.flickr_badge_image, #flickr_badge_image3.flickr_badge_image { 
-    margin: 15px 0 10px 10px; 
+.flickr-footer {
+    margin: 10px 0 -10px;
 }
-#flickr_badge_image1.flickr_badge_image, #flickr_badge_image4.flickr_badge_image { 
+#flickr_badge_image1.flickr_badge_image, #flickr_badge_image4.flickr_badge_image,
+#flickr_badge_image7.flickr_badge_image { 
     margin-left: 0; 
 }
 .flickr_badge_image img {
