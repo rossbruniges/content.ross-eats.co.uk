@@ -343,6 +343,7 @@ div.vcard .adr p {
     margin:0 0 0 10px;
     padding-left: 10px;
     border-left: 1px solid #efeae4;
+    text-transform: capitalize;
 }
 .related_posts ol li:first-child {
     margin-left: 0;
@@ -546,6 +547,9 @@ div.vcard .adr p {
 }
 #footer h2.widgettitle { 
     margin-top: 0; 
+}
+.textwidget p {
+  font-size: 1.2em;
 }
 .flickr-footer {
   overflow: hidden;
