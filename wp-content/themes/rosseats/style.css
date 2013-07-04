@@ -126,8 +126,11 @@ div#title a:hover {
     -moz-boirder-radius: 4px;
     border-radius: 4px;
 }
-#comments {
-    clear: both;
+#disqus_thread {
+  clear: both;
+  border-top: 1px solid #EFEAE4;
+  margin-top: 2em;
+  padding-top: 2em;
 }
 .entry .photo_frame {
 	background: #F0EBE6;
@@ -484,6 +487,10 @@ div.vcard .adr p {
 }
 #sidebox p {
 	line-height: 1.6em;
+}
+#sidebox img {
+  width: 100%;
+  height: auto;
 }
 
 /* FOOTER
