@@ -61,7 +61,7 @@
 		        		echo '</div><figcaption>' . $attachment->description . '</figcaption>';
 		    		?>
 		    		</figure>
-					<?php the_content( __( 'read more...', 'titan' ) ); ?>        			 
+					<?php the_content( __( '', 'titan' ) ); ?>        			 
 					<?php wp_link_pages(); ?>
 				</div><!--end entry-->
 				<div class="post-footer">

@@ -48,14 +48,22 @@
             </div>
         <?php endif; ?>
  		<div id="images">
- 		    <h2>In photos</h2>
- 		    <?php 
+            <?php if (array_key_exists('Restaurant flickr group', $details)) : ?>
+ 		     <h2>In photos</h2>
+ 		     <?php 
  		        the_post_thumbnail(array(240,240)); 
  			    $attachment = getImageAttachmentData(get_the_ID());
 		        echo '<p>' . $attachment->description . '</p>';
-		    ?>
- 			<a href="http://www.flickr.com/photos/thecssdiv/sets/<?php echo $details['Restaurant flickr group'][0] ?>/">More pictures</a>
- 		</div>
+		      ?>
+ 			    <a href="http://www.flickr.com/photos/thecssdiv/sets/<?php echo $details['Restaurant flickr group'][0] ?>/">More pictures</a>
+            <?php else : ?>
+                <?php 
+                the_post_thumbnail(array(240,240)); 
+                $attachment = getImageAttachmentData(get_the_ID());
+                echo '<p>' . $attachment->description . '</p>';
+              ?>
+            <?php endif; ?>
+        </div>
  		<div class="description">
             
  			<?php the_content(__( 'read more...', 'titan')); ?>
