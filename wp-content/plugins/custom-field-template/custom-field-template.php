@@ -4,7 +4,7 @@ Plugin Name: Custom Field Template
 Plugin URI: http://wpgogo.com/development/custom-field-template.html
 Description: This plugin adds the default custom fields on the Write Post/Page.
 Author: Hiroaki Miyashita
-Version: 2.1.5
+Version: 2.1.6
 Author URI: http://wpgogo.com/
 */
 
@@ -2348,7 +2348,7 @@ jQuery(this).addClass("closed");
 			
 		if ( $multipleButton == true && $ct_value == $cftnum ) :
 			$addfield .= '<div style="margin-top:-1em;">';
-			$addfield .= '<a href="#clear" onclick="jQuery(this).parent().parent().parent().clone().insertAfter(jQuery(this).parent().parent().parent()).find('."'input'".').val('."''".');jQuery(this).parent().css('."'visibility','hidden'".');jQuery(this).parent().prev().css('."'visibility','hidden'".'); return false;">' . __('Add New', 'custom-field-template') . '</a>';
+			$addfield .= '<a href="#clear" onclick="var tmp = jQuery(this).parent().parent().parent().clone().insertAfter(jQuery(this).parent().parent().parent());if(tmp.find('."'input[type=file]'".').attr('."'id'".').match(/([0-9]+)$/)) { matchval = RegExp.$1; matchval++;tmp.find('."'input[type=file]'".').attr('."'id',".'tmp.find('."'input[type=file]'".').attr('."'id'".').replace(/([0-9]+)$/, matchval));}if(tmp.find('."'input[type=hidden]'".').attr('."'id'".').match(/([0-9]+)_hide$/)) { matchval = RegExp.$1; matchval++;tmp.find('."'input[type=hidden]'".').attr('."'id',".'tmp.find('."'input[type=hidden]'".').attr('."'id'".').replace(/([0-9]+)_hide$/, matchval+'."'_hide'".'));}if(tmp.find('."'input[type=hidden]'".').attr('."'name'".').match(/\[([0-9]+)\]$/)) { matchval = RegExp.$1; matchval++;tmp.find('."'input[type=hidden]'".').attr('."'name',".'tmp.find('."'input[type=hidden]'".').attr('."'name'".').replace(/\[([0-9]+)\]$/, \'[\'+matchval+\']\'));}jQuery(this).parent().css('."'visibility','hidden'".');jQuery(this).parent().prev().css('."'visibility','hidden'".'); return false;">' . __('Add New', 'custom-field-template') . '</a>';
 			$addfield .= '</div>';
 		endif;
 	
@@ -2978,12 +2978,16 @@ jQuery("#edButtonPreview").trigger("click"); }' . "\n";*/
 
 		if( !isset( $id ) || isset($_REQUEST['post_ID']) )
 			$id = $_REQUEST['post_ID'];
-		
+
 		if( !current_user_can('edit_post', $id) )
 			return $id;
 								
 		if( isset($_REQUEST['custom-field-template-verify-key']) && !wp_verify_nonce($_REQUEST['custom-field-template-verify-key'], 'custom-field-template') )
 			return $id;
+			
+		if ( $post->post_type == 'revision' )
+    		return $id;
+			
 		if ( !empty($_POST['wp-preview']) && $id != $post->ID ) :
 			$revision_ids = $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_parent = %d AND post_type = 'revision'", $id ) );
 			$wpdb->query( "DELETE FROM $wpdb->postmeta WHERE post_id IN (" . implode( ',', $revision_ids ) . ")" );
@@ -3181,7 +3185,7 @@ jQuery("#edButtonPreview").trigger("click"); }' . "\n";*/
 					add_metadata( 'post', $id, $title, apply_filters('cft_'.rawurlencode($title), $val) );
 			endif;
 		endforeach;
-
+		
 		if ( !empty($tags_input) && is_array($tags_input) ) :
 			  foreach ( $tags_input as $tags_key => $tags_value ) :
 				if ( class_exists('SimpleTags') && $tags_key == 'post_tag' ) :
