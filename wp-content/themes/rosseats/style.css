@@ -126,8 +126,11 @@ div#title a:hover {
     -moz-boirder-radius: 4px;
     border-radius: 4px;
 }
-#comments {
-    clear: both;
+#disqus_thread {
+  clear: both;
+  border-top: 1px solid #EFEAE4;
+  margin-top: 2em;
+  padding-top: 2em;
 }
 .entry .photo_frame {
 	background: #F0EBE6;
@@ -184,7 +187,76 @@ div.vcard .fn {
 div.vcard .adr p {
   line-height: 1.5;
 }
-
+.navigation {
+  overflow: hidden;
+}
+#minis {
+  clear: both;
+  border-top: 1px solid #EFEAE4;
+  margin-top: 1em;
+  padding-top: 1em;
+  overflow: hidden;
+}
+#minis h2 {
+  font-size: 1.6em;
+  margin-bottom: 0.6em;
+}
+#minis p {
+  font-size: 1.2em;
+}
+#minis .post {
+  float: left;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 33%;
+  padding-right: 20px;
+  border-top: none;
+}
+#minis .post-header {
+  font-size: 1.2em;
+  border-top: none;
+  margin: 0.5em 0;
+  padding-top: 0;
+}
+#minis .post-header .author {
+  font-size: inherit;
+  margin: 0;
+}
+#minis .entry {
+  margin-left: 0;
+  width: auto;
+}
+#minis .post-footer {
+  margin-left: 0;
+}
+#minis .post-footer a {
+  font-size: 1em;
+  background-position: 0 0.6em;
+}
+#minis .entry p {
+  font-size: inherit;
+}
+#minis figure {
+  margin: 0;
+  background: #F0EBE6;
+  border: 1px solid #E6E1DC;
+  padding: 10px;
+  margin-bottom: 0.5em;
+}
+#minis figure figcaption {
+  line-height: 1;
+  margin-top: 0.5em;
+}
+#minis figure img {
+  width: 100%;
+  height: auto;
+  margin-top: -80px;
+}
+#minis figure .frame {
+  height: 100px;
+  overflow: hidden;
+}
 /* Burrito stuff */
 .burrito .description,
 .category-london-burritos .entry {
@@ -343,6 +415,7 @@ div.vcard .adr p {
     margin:0 0 0 10px;
     padding-left: 10px;
     border-left: 1px solid #efeae4;
+    text-transform: capitalize;
 }
 .related_posts ol li:first-child {
     margin-left: 0;
@@ -484,6 +557,10 @@ div.vcard .adr p {
 #sidebox p {
 	line-height: 1.6em;
 }
+#sidebox img {
+  width: 100%;
+  height: auto;
+}
 
 /* FOOTER
 ----------------------------------------------- */
@@ -546,6 +623,9 @@ div.vcard .adr p {
 }
 #footer h2.widgettitle { 
     margin-top: 0; 
+}
+.textwidget p {
+  font-size: 1.2em;
 }
 .flickr-footer {
   overflow: hidden;

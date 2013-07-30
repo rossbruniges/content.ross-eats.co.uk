@@ -48,25 +48,48 @@
             </div>
         <?php endif; ?>
  		<div id="images">
- 		    <h2>In photos</h2>
- 		    <?php 
+            <?php if (array_key_exists('Restaurant flickr group', $details)) : ?>
+ 		     <h2>In photos</h2>
+ 		     <?php 
  		        the_post_thumbnail(array(240,240)); 
  			    $attachment = getImageAttachmentData(get_the_ID());
 		        echo '<p>' . $attachment->description . '</p>';
-		    ?>
- 			<a href="http://www.flickr.com/photos/thecssdiv/sets/<?php echo $details['Restaurant flickr group'][0] ?>/">More pictures</a>
- 		</div>
+		      ?>
+ 			    <a href="http://www.flickr.com/photos/thecssdiv/sets/<?php echo $details['Restaurant flickr group'][0] ?>/">More pictures</a>
+            <?php else : ?>
+                <?php 
+                the_post_thumbnail(array(240,240)); 
+                $attachment = getImageAttachmentData(get_the_ID());
+                echo '<p>' . $attachment->description . '</p>';
+              ?>
+            <?php endif; ?>
+        </div>
  		<div class="description">
             
  			<?php the_content(__( 'read more...', 'titan')); ?>
  			<a href="https://twitter.com/share" class="twitter-share-button" data-text="Thought this was good enough to share" data-via="ross_eats">Tweet</a>
             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
  		</div>
- 		<?php if(function_exists('related_posts')): ?>
-            <div class="related_posts">
-                <?php related_posts(); ?>
+        <div class="related_posts">
+            <?php
+            $areas = array('london', 'america', 'uk');
+            $active_areas = array();
+            foreach (get_the_tags() as $tag) {
+                if (in_array($tag->name, $areas)) {
+                    array_push($active_areas, $tag->name);
+                }
+            }
+            if (count($active_areas) > 0) {
+                echo "<h2>Anything else 'near-by'?</h2>";
+                echo "<p>Looking for something a bit differet? See if I've got any other reviews from near-by (obviously the accuacy of 'near-by' could vary...)</p>";
+                echo "<ol>";
+                foreach ($active_areas as $value) {
+                    echo "<li><a href=/in/" . $value . ">" . $value . "</a></li>";
+                };
+                echo "</ol>";
+            }
+        ?>
             </div>
-        <? endif; ?>
         <div class="tags"><?php the_tags( '<span>Tags</span> <p>', ', ', '</p>'); ?></div>
  		<?php wp_link_pages(); ?>
  	</div><!--end entry-->
