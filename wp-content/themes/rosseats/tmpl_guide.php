@@ -65,6 +65,8 @@ then displays them in a lovely ordered list
 			            <p><?php echo $review_details['Restaurant cost'][0]; ?></p>
 			            <?php if (!has_tag('mini')) : ?>
 			            <a href="<?php echo get_permalink(); ?>">Read my review <?php the_post_thumbnail(array(80,810)) ?></a>
+			            <?php else : ?>
+			            	<?php the_post_thumbnail(array(80,810)) ?>
 			            <?php endif; ?>
 			            </div>
 			            <div class="adr">

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
     <?php if ( is_home() ) {
-        query_posts($query_string . '&posts_per_page=3&tag__not_in=144');
+        query_posts($query_string . "&posts_per_page=3&tag__not_in=" . MINI_TAG_ID);
         }
     ?>
 	<?php if ( have_posts() ) : ?>
