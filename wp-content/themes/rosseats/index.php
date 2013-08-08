@@ -71,6 +71,7 @@
 		<?php endwhile; /* rewind or continue if all posts have been fetched */ ?>
 		</div>
 	<?php endif; ?>
+	<?php wp_reset_query(); /* #9 on github - screwy homepage title */ ?>
 </div><!--end content-->
 <?php get_sidebar(); ?>
 <?php get_footer(); ?>
