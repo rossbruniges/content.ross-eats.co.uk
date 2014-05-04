@@ -1,3 +1,5 @@
+= 1.3.8 =
+* 2013-09-12 - Fixed a security issue (thanks to James Pearson)
 = 1.3.7 =
 * 2010-12-01 - Just a day after I released 1.3.6, wordpress released 3.0.2 to fix a few security issues.I am releasing a fresh version after testing with this one
 

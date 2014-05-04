@@ -4,7 +4,7 @@
 Plugin Name: Platinum SEO Pack
 Plugin URI: http://techblissonline.com/platinum-seo-pack/
 Description: Complete SEO solution for your Wordpress blog.
-Version: 1.3.7
+Version: 1.3.8
 Author: Rajesh - Techblissonline Dot Com
 Author URI: http://techblissonline.com/
 */
@@ -29,7 +29,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 class Platinum_SEO_Pack {
 
- 	var $version = "1.3.7";
+ 	var $version = "1.3.8";
 
  	/** Max numbers of chars in auto-generated description */
  	var $max_description_length = 160;
@@ -714,9 +714,9 @@ class Platinum_SEO_Pack {
 			$title = $this->internationalize(wp_title('', false));
 		} else if (is_search() && isset($s) && !empty($s)) {
 			if (function_exists('attribute_escape')) {
-				$search = attribute_escape(stripcslashes($s));
+				$search = attribute_escape($s);
 			} else {
-				$search = wp_specialchars(stripcslashes($s), true);
+				$search = esc_attr($s);
 			}
 			$search = $this->capitalize($search);
 			$title = $search;
@@ -828,9 +828,9 @@ class Platinum_SEO_Pack {
 			$header = $this->replace_title($header, $title);
 		} else if (is_search() && isset($s) && !empty($s)) {
 			if (function_exists('attribute_escape')) {
-				$search = attribute_escape(stripcslashes($s));
+				$search = attribute_escape($s);
 			} else {
-				$search = wp_specialchars(stripcslashes($s), true);
+				$search = esc_attr($s);
 			}
 			$search = $this->capitalize($search);
             $title_format = get_option('aiosp_search_title_format');

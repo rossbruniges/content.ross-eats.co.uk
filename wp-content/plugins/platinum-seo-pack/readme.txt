@@ -3,7 +3,7 @@ Contributors: Techblissonline Dot Com (Rajesh)
 Donate link: http://techblissonline.com/platinum-seo-pack/
 Tags: seo, plugin, wordpress, posts, google, meta index,meta keywords,meta description,title,post, wordpress seo, platinum seo, seo plugin
 Requires at least: 1.5
-Tested up to: 3.0.2
+Tested up to: 3.6.1
 Stable tag: trunk
 
 Platinum SEO Plugin offers Complete onsite SEO solution for your Wordpress blog.Platinum SEO Plugin offers all the functionalities of All In One SEO plus more cooler onsite SEO options. It is automatic and also imports all your current settings in All in one SEO Plugin.But you need to disable All In One SEO before enabling Platinum SEO.
@@ -57,6 +57,9 @@ Please read these **[FAQs](http://techblissonline.com/platinum-seo-pack-faq/)** 
 3. Platinum SEO Pack form in "Add Post" section of wordpress
 
 == Changelog ==
+= 1.3.8 =
+* 2013-09-12 - Fixed a security issue (Many thanks to James Pearson)
+
 = 1.3.7 =
 * 2010-12-01 - Just a day after I released 1.3.6, wordpress released 3.0.2 to fix a few security issues.I am releasing a fresh version after testing with this one
 
