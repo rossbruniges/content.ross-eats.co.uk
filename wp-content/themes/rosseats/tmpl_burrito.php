@@ -13,30 +13,41 @@ Template Name: London burritos
 			<ol class="quest_list">
 			<?php
 			    // create a wordpress loop that will be used to hold the burrito posts
-			    $burrito_list = new WP_Query('category_name=london-burritos&posts_per_page=-1&meta_key=Rank&orderby=meta_value_num&order=ASC');
+			    $burrito_list = new WP_Query('category_name=london-burritos&posts_per_page=-1&meta_key=burrito_rank&orderby=meta_value_num&order=ASC');
 			    $burrito_count = 0;
 			    while ($burrito_list->have_posts()) : $burrito_list->the_post();
 			        $burrito_count++;
 			        $burrito_details = get_post_custom($post->ID);
+			        $burrito_url = $burrito_details['burrito_url'][0] ? $burrito_details['burrito_url'][0] : $burrito_details['URL'][0];
+				    $burrito_price = $burrito_details['burrito_price'][0] ? $burrito_details['burrito_price'][0] : $burrito_details['Price'][0];
+				    $burrito_phone = $burrito_details['burrito_phone'][0] ? $burrito_details['burrito_phone'][0] : $burrito_details['Phone'][0];
+				    $burrito_street = $burrito_details['burrito_street'][0] ? $burrito_details['burrito_street'][0] : $burrito_details['Street'][0];
+				    $burrito_postcode = $burrito_details['burrito_postcode'][0] ? $burrito_details['burrito_postcode'][0] : $burrito_details['Postcode'][0];
+				    $burrito_urbanspoon = $burrito_details['burrito_urbanspoon'][0] ? $burrito_details['burrito_urbanspoon'][0] : $burrito_details['urbanspoon'][0];
+				    $burrito_squaremeal = $burrito_details['burrito_squaremeal'][0] ? $burrito_details['burrito_squaremeal'][0] : $burrito_details['squaremeal'][0];
 			?>
 			    <li class="vcard">
 			        <strong class="rank"><span>#</span><?php echo $burrito_count; ?></strong>
 			        <h3 class="fn org"><?php echo get_the_title(); ?></h3>
-			        <p class="adr"><span class="street-address"><?php echo $burrito_details['Street'][0]; ?></span>, <span class="region">London</span> <span class="postal-code"><?php echo $burrito_details['Postcode'][0]; ?></span></p>
+			        <p class="adr">
+			        	<span class="street-address"><?php echo $burrito_street; ?></span>, 
+			        	<span class="region">London</span> 
+			        	<span class="postal-code"><?php echo $burrito_postcode; ?></span>
+			        </p>
 			        <p>
 			        <?php
-			            if ($burrito_details['Phone'][0] != "") {
-			                echo "<span class='tel'>" . $burrito_details['Phone'][0] . "</span>";
+			            if ($burrito_phone != "") {
+			                echo "<span class='tel'>" . $burrito_phone . "</span>";
 			            }
-			            if ($burrito_details['Phone'][0] != "" && $burrito_details['URL'][0] != "") {
+			            if ($burrito_phone != "" && $burrito_url != "") {
 			                echo " and  ";
 			            }
- 			            if ($burrito_details['URL'][0] != "") {
- 			                echo "<a class='url' href='http://" . $burrito_details['URL'][0] . "'>" . $burrito_details['URL'][0] . "</a>";
+ 			            if ($burrito_url != "") {
+ 			                echo "<a class='url' href='http://" . $burrito_url . "'>" . $burrito_url . "</a>";
  			            }
  			        ?>
 			        </p>
-                    <p><strong>Cost</strong>: <?php echo $burrito_details['Price'][0]; ?></p>
+                    <p><strong>Cost</strong>: <?php echo $burrito_price; ?></p>
                     <?php the_content(); ?>
 			    </li>
             <?php endwhile; ?>

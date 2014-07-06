@@ -1,4 +1,13 @@
-<?php $details = get_post_custom($post->ID); ?>
+<?php 
+    $details = get_post_custom($post->ID);
+    $burrito_url = $details['burrito_url'][0] ? $details['burrito_url'][0] : $details['URL'][0];
+    $burrito_price = $details['burrito_price'][0] ? $details['burrito_price'][0] : $details['Price'][0];
+    $burrito_phone = $details['burrito_phone'][0] ? $details['burrito_phone'][0] : $details['Phone'][0];
+    $burrito_street = $details['burrito_street'][0] ? $details['burrito_street'][0] : $details['Street'][0];
+    $burrito_postcode = $details['burrito_postcode'][0] ? $details['burrito_postcode'][0] : $details['Postcode'][0];
+    $burrito_urbanspoon = $details['burrito_urbanspoon'][0] ? $details['burrito_urbanspoon'][0] : $details['urbanspoon'][0];
+    $burrito_squaremeal = $details['burrito_squaremeal'][0] ? $details['burrito_squaremeal'][0] : $details['squaremeal'][0];
+?>
 <div class="post-header">
 	<h1 class="summary"><?php the_title(); ?></h1>
 		<p class="author">by <strong class="reviewer vcard"><span class="fn"><?php printf(__ ( '%s', 'titan'), get_the_author()); ?></span></strong> on <abbr class="dtreviewed" title="<?php the_time(__ ( 'Y-m-d', 'titan')); ?>"><?php the_time(__ ( 'F jS, Y', 'titan')); ?></abbr></p>
@@ -7,30 +16,30 @@
         <h2>At a glance</h2>
      	<p class="fn">
      	    <?php
-     	        if ($details['Restaurant URL'][0]) {
-     		        echo '<a href="' . $details['URL'][0] . '" class="url">' . the_title()  . '</a>';
+     	        if ($burrito_url) {
+     		        echo '<a href="' . $burrito_url . '" class="url">' . the_title()  . '</a>';
      		    } else {
      		        echo the_title();
      		    }
             ?>
      	</p>
-     	<p><strong>Cost :</strong> <?php echo $details['Price'][0] ?></p>
-     	<p><strong>Phone: </strong> <span class="tel"><?php echo $details['Phone'][0] ?></span></p>
+     	<p><strong>Cost :</strong> <?php echo $burrito_price ?></p>
+     	<p><strong>Phone: </strong> <span class="tel"><?php echo $burrito_phone ?></span></p>
      	<h3>Location</h3>
      	<div class="adr">
-     	    <p class="street-address"><?php echo $details['Street'][0] ?></p>
+     	    <p class="street-address"><?php echo $burrito_street ?></p>
      		<p class="region">London</p>
-     		<p class="postal-code"><?php echo $details['Postcode'][0] ?></p>
+     		<p class="postal-code"><?php echo $burrito_postcode ?></p>
      	</div>
      	<?php
-     	    if (count($details['squaremeal']) || count($details['urbanspoon'])) {
+     	    if ($burrito_urbanspoon || $burrito_squaremeal) {
                  echo "<h3>Don't just take my word for it</h3>";
             }
-     	    if ($details['urbanspoon'][0] != "") {
-          		echo $details['urbanspoon'][0];
+     	    if ($burrito_urbanspoon != "") {
+          		echo $burrito_urbanspoon;
      		}
-     		if ($details['squaremeal'][0] != "") {
-          		echo $details['squaremeal'][0];
+     		if ($burrito_squaremeal != "") {
+          		echo $burrito_squaremeal;
      		}
      	?>
     </div>

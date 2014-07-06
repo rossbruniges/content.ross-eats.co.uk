@@ -30,7 +30,7 @@ then displays them in a lovely ordered list
 				    			'posts_per_page' => -1,
 				    			'orderby' => 'date',
 				    			'order' => 'DESC',
-				    			'meta_key' => 'Restaurant rating',
+				    			'meta_key' => 'restaurant_rating',
 				    			'meta_value' => $i,
 				    			'year' => date('Y')));
 
@@ -40,7 +40,7 @@ then displays them in a lovely ordered list
 				    			'posts_per_page' => -1,
 				    			'orderby' => 'date',
 				    			'order' => 'DESC',
-				    			'meta_key' => 'Restaurant rating',
+				    			'meta_key' => 'restaurant_rating',
 				    			'meta_value' => $i));
             			} else {
             				$rated_list = new WP_Query(array(
@@ -48,7 +48,7 @@ then displays them in a lovely ordered list
 				    			'posts_per_page' => -1,
 				    			'orderby' => 'date',
 				    			'order' => 'DESC',
-				    			'meta_key' => 'Restaurant rating',
+				    			'meta_key' => 'restaurant_rating',
 				    			'meta_value' => $i,
 				    			'tag' => $page_slug));
             			}
@@ -56,13 +56,16 @@ then displays them in a lovely ordered list
             				echo '<li><h2>Rated ' . $i . ' <span>(out of 10)</span></h2><ul>';
             				while ($rated_list->have_posts()) : $rated_list->the_post();
 			        			$review_details = get_post_custom($post->ID);
+			        			$review_details_cost = $review_details['restaurant_cost'][0] ? $review_details['restaurant_cost'][0] : $review_details['Restaurant cost'][0]; 
+			        			$review_details_address = $review_details['restaurant_address'][0] ? $review_details['restaurant_address'][0] : $review_details['Restaurant address'][0]; 
+			        			$review_details_amend = $review_details['restaurant_amend'][0] ? $review_details['restaurant_amend'][0] : $review_details['post_alert'][0];
 			        	?>
 			        		<li class="vcard">
 			        <h3 class="fn"><?php echo str_replace('reviewed', '', get_the_title()); ?></h3>
 			        <div class="summary">
 			            
 			            
-			            <p><?php echo $review_details['Restaurant cost'][0]; ?></p>
+			            <p><?php echo $review_details_cost; ?></p>
 			            <?php if (!has_tag('mini')) : ?>
 			            <a href="<?php echo get_permalink(); ?>">Read my review <?php the_post_thumbnail(array(80,810)) ?></a>
 			            <?php else : ?>
@@ -70,12 +73,12 @@ then displays them in a lovely ordered list
 			            <?php endif; ?>
 			            </div>
 			            <div class="adr">
-                 		    <?php echo $review_details['Restaurant address'][0]; ?>
+                 		    <?php echo $review_details_address; ?>
                  		</div>
                         <p class="date">Reviewed on <?php the_time(__ ( 'F jS, Y', 'titan')); ?></p>
-                 		<?php if (count($review_details['post_alert'])) : ?>
+                 		<?php if ($review_details_amend) : ?>
                         <div class="alert">
-                            <?php echo $review_details['post_alert'][0]; ?>
+                            <?php echo $review_details_amend; ?>
                         </div>
                         <?php endif; ?>
                         

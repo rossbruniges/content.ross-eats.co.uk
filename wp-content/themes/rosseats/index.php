@@ -43,12 +43,15 @@
     		<h2>Mini reviews</h2>
     		<p>Bite sized reviews - for either when the experience was too short to fully judge or for when I don't have the most time to get words down in internet.</p>
 		<?php while ( have_posts() ) : the_post(); ?>
-			<?php $details = get_post_custom($post->ID); ?>
+			<?php 
+				$details = get_post_custom($post->ID);
+				$details_url = $details['restaurant_url'][0] ? $details['restaurant_url'][0] : $details['Restaurant URL'][0];
+			?>
 			<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 				<div class="post-header">
 					<h3><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php esc_attr( sprintf( __( 'Permanent Link to %s', 'titan' ), the_title_attribute( 'echo=false' ) ) ); ?>"><?php the_title(); ?></a></h3>
-					<?php if (count($details['Restaurant URL'])) {
-     	    			echo '<a href="' . $details['Restaurant URL'][0] . '" class="url">' . $details['Restaurant URL'][0]  . '</a>';
+					<?php if ($details_url) {
+     	    			echo '<a href="' . $details_url . '" class="url">' . $details_url  . '</a>';
      				} ?>
 					<div><?php the_time(__( 'F jS, Y', 'titan' )); ?></div>
 					<div class="author"><?php printf( __( 'by %s', 'titan' ), get_the_author() ); ?></div>

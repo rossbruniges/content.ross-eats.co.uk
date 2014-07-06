@@ -126,6 +126,9 @@ div#title a:hover {
     -moz-boirder-radius: 4px;
     border-radius: 4px;
 }
+#comments {
+  clear: both;
+}
 #disqus_thread {
   clear: both;
   border-top: 1px solid #EFEAE4;
