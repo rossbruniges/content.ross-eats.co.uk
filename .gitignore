@@ -1,4 +1,5 @@
 /wp-content/uploads/
 /wp-content/upgrade/
 /wp-content/backups/
+/wp-content/plugins/wordpress-importer/
 .DS_Store
